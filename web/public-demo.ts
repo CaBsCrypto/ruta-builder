@@ -8,8 +8,8 @@ export const PUBLIC_DEMO_CATALOG_AS_OF = '2026-10-11';
 const MAX_PROJECTS = 20, MAX_REPORTS = 50, MAX_STORAGE_BYTES = 2 * 1024 * 1024;
 const catalog = seed.catalog.opportunities as Opportunity[];
 const projects = seed.projects as { id: string; title: string; profile: CoachProfile; inspection: Omit<SourceInspection, 'documents'> }[];
-const labels: Partial<Record<ProfileField, string>> = { projectName: 'Proyecto', description: 'Descripción', audience: 'Usuarios objetivo', stage: 'Etapa', currentChain: 'Red actual', targetChain: 'Red objetivo', team: 'Equipo', license: 'Licencia', users: 'Usuarios actuales', country: 'País', budgetUsd: 'Presupuesto USD', milestones: 'Hitos', publicBenefit: 'Beneficio público', solanaUse: 'Uso de Solana' };
-const questionLabels: Partial<Record<ProfileField, string>> = { team: '¿Quiénes forman el equipo y qué hace cada persona?', license: '¿Qué licencia y partes públicas tendrá?', users: '¿Qué usuarios reales tiene? Si aún no hay, indícalo.', budgetUsd: '¿Cuánto solicitas en USD y cómo usarías esos fondos?', milestones: '¿Qué hitos medibles puedes entregar?', publicBenefit: '¿Qué beneficio público ofrece para otros builders o usuarios?', solanaUse: '¿Cómo ayuda Solana y qué integración puedes demostrar?' };
+const labels: Partial<Record<ProfileField, string>> = { projectName: 'Project', description: 'Description', audience: 'Target users', stage: 'Stage', currentChain: 'Current network', targetChain: 'Target network', team: 'Team', license: 'License', users: 'Current users', country: 'Country', budgetUsd: 'Budget USD', milestones: 'Milestones', publicBenefit: 'Public benefit', solanaUse: 'Solana use' };
+const questionLabels: Partial<Record<ProfileField, string>> = { team: 'Who is on the team and what does each person do?', license: 'Which license and public components will it have?', users: 'Which real users does it have? If none yet, say so.', budgetUsd: 'How much are you requesting in USD and how would you use the funds?', milestones: 'Which measurable milestones can you deliver?', publicBenefit: 'What public benefit does it offer other builders or users?', solanaUse: 'How does Solana help and which integration can you demonstrate?' };
 type DemoDiagnostic = { id: string; revision: number; createdAt: string; updatedAt: string; state: 'ready' | 'partial'; profile: CoachProfile; sourceMode: 'public' | 'fixture'; fixtureId?: string; preferredOpportunityId?: string; evidence: Evidence[]; coverage: SourceInspection['coverage']; metrics: SourceInspection['metrics'] };
 type DemoReport = { id: string; diagnosticId: string; revision: number; opportunityId: string; inputsHash: string; unlocked: boolean; content: CoachReport };
 type DemoState = { version: 1; diagnostics: DemoDiagnostic[]; reports: DemoReport[] };
@@ -50,7 +50,7 @@ function cleanProfile(value: unknown): CoachProfile {
 function declared(profile: CoachProfile, at: string): Evidence[] {
   return Object.entries(labels).flatMap(([field, label]) => {
     const value = profile[field as ProfileField];
-    return value ? [{ id: `declared:${field}`, category: 'profile' as const, provenance: 'declared' as const, claim: `${label} declarado: ${value}`, excerpt: value, url: `builder://profile/${field}`, observedAt: at }] : [];
+    return value ? [{ id: `declared:${field}`, category: 'profile' as const, provenance: 'declared' as const, claim: `${label} declared: ${value}`, excerpt: value, url: `builder://profile/${field}`, observedAt: at }] : [];
   });
 }
 function available(at: Date): Opportunity[] {
@@ -64,10 +64,10 @@ function compare(profile: CoachProfile, evidence: Evidence[], preferred: string 
     const criteria = opportunity.criteria.map(criterion => {
       const value = profile[criterion.field];
       const refs = evidence.filter(item => item.id === `declared:${criterion.field}`).map(item => item.id);
-      if (!value) return { id: criterion.id, label: criterion.label, status: 'missing' as const, reason: 'Dato pendiente. La demo no infiere residencia, equipo, usuarios ni presupuesto.', evidenceIds: [] };
-      if (criterion.allowed && !criterion.allowed.some(allowed => allowed.toLowerCase() === value.toLowerCase())) return { id: criterion.id, label: criterion.label, status: 'incompatible' as const, reason: `El dato declarado no coincide con el requisito (${criterion.allowed.join(', ')}).`, evidenceIds: refs };
-      if (/funcional|integraci[oó]n|demostrable|demo|repositorio.*(?:entrega|preparado)/i.test(criterion.label)) return { id: criterion.id, label: criterion.label, status: 'missing' as const, reason: 'Una declaración o SDK instalado no demuestra una integración funcionando. Requiere revisión humana.', evidenceIds: refs };
-      return { id: criterion.id, label: criterion.label, status: 'matched' as const, reason: 'Declaración compatible con el snapshot demostrativo; el organizador confirma admisión y elegibilidad.', evidenceIds: refs };
+      if (!value) return { id: criterion.id, label: criterion.label, status: 'missing' as const, reason: 'Missing information. The demo does not infer residence, team, users or budget.', evidenceIds: [] };
+      if (criterion.allowed && !criterion.allowed.some(allowed => allowed.toLowerCase() === value.toLowerCase())) return { id: criterion.id, label: criterion.label, status: 'incompatible' as const, reason: `The declared information does not match the requirement (${criterion.allowed.join(', ')}).`, evidenceIds: refs };
+      if (/functional|integration|demonstrable|demo|repository.*(?:submission|ready)|funcional|integraci[oó]n|demostrable|repositorio.*(?:entrega|preparado)/i.test(criterion.label)) return { id: criterion.id, label: criterion.label, status: 'missing' as const, reason: 'A declaration or installed SDK does not prove a working integration. Human review is required.', evidenceIds: refs };
+      return { id: criterion.id, label: criterion.label, status: 'matched' as const, reason: 'Declaration compatible with the demo snapshot; the organizer confirms admission and eligibility.', evidenceIds: refs };
     });
     const status = criteria.some(item => item.status === 'incompatible') ? 'incompatible' : criteria.some(item => item.status === 'missing') ? 'pending' : 'possible';
     return { opportunity: clone(opportunity), status, criteria } as OpportunityMatch;
@@ -96,7 +96,7 @@ export function createPublicDemoApi(storage?: Storage, options: PublicDemoOption
   const catalogNow = options.catalogNow ?? (() => new Date('2026-10-11T15:00:00.000Z'));
   const randomId = options.randomId ?? (() => globalThis.crypto.randomUUID());
   const origin = options.origin ?? (typeof location !== 'undefined' ? location.origin : 'https://ruta-builder.demo.invalid');
-  const catalogVersion = `${seed.catalog.version}:public-demo-historical-snapshot`;
+  const catalogVersion = `${seed.catalog.version}:public-demo-historical-snapshot:en-v2`;
   const response = (status: number, data: unknown) => Response.json(data, { status, headers: { 'Cache-Control': 'no-store', 'X-Ruta-Demo': 'browser-local-no-payments' } });
   function load(): DemoState {
     let raw: string | null;
@@ -133,8 +133,8 @@ export function createPublicDemoApi(storage?: Storage, options: PublicDemoOption
     const fixture = data.sourceMode === 'fixture' ? projects.find(item => item.id === data.fixtureId)! : undefined;
     const at = now().toISOString();
     const coverage: SourceInspection['coverage'] = fixture ? clone(fixture.inspection.coverage) : { complete: false, inspected: [], omitted: [
-      ...[data.profile.websiteUrl, data.profile.repositoryUrl].filter(Boolean).map(url => ({ url, reason: 'Demo pública: URL aportada como declaración; no se inspecciona ni se solicita a la red.' })),
-      { url: 'builder://public-demo', reason: 'Demo pública histórica: no se leen webs, repositorios ni servicios externos. Sólo se utilizan tus declaraciones.' },
+      ...[data.profile.websiteUrl, data.profile.repositoryUrl].filter(Boolean).map(url => ({ url, reason: 'Public demo: URL supplied as a declaration; it is not inspected or requested over the network.' })),
+      { url: 'builder://public-demo', reason: 'Historical public demo: no websites, repositories or external services are read. Only your declarations are used.' },
     ], failures: [] };
     return { ...data, id, revision, createdAt, updatedAt: at, state: coverage.complete ? 'ready' : 'partial',
       evidence: [...(fixture ? clone(fixture.inspection.evidence) : []), ...declared(data.profile, at)], coverage,
@@ -185,10 +185,10 @@ export function createPublicDemoApi(storage?: Storage, options: PublicDemoOption
           const inputsHash = await fingerprint({ profile: diagnostic.profile, evidence: diagnostic.evidence, coverage: diagnostic.coverage, matches, catalogVersion });
           let report = state.reports.find(item => item.diagnosticId === diagnostic.id && item.revision === diagnostic.revision && item.opportunityId === selected.opportunity.id && item.inputsHash === inputsHash);
           if (!report) {
-            const content = fixtureCoachContent({ profile: diagnostic.profile, evidence: diagnostic.evidence, matches, selectedOpportunity: selected.opportunity });
+            const content = fixtureCoachContent({ profile: diagnostic.profile, evidence: diagnostic.evidence, matches, selectedOpportunity: selected.opportunity }, 'en');
             if (!validateCoachContent(content, diagnostic.evidence)) return response(422, { error: 'invalid_report_content' });
             const id = randomId(), full: CoachReport = { schemaVersion: 'builder-coach-report/v1', id, diagnosticId: diagnostic.id, revision: diagnostic.revision,
-              createdAt: now().toISOString(), inputsHash, catalogVersion, title: `Plan y postulación · ${diagnostic.profile.projectName}`, profile: clone(diagnostic.profile), evidence: clone(diagnostic.evidence), coverage: clone(diagnostic.coverage), opportunities: clone(matches), selectedOpportunity: clone(selected.opportunity), content,
+              createdAt: now().toISOString(), inputsHash, catalogVersion, title: `Plan and application · ${diagnostic.profile.projectName}`, profile: clone(diagnostic.profile), evidence: clone(diagnostic.evidence), coverage: clone(diagnostic.coverage), opportunities: clone(matches), selectedOpportunity: clone(selected.opportunity), content,
               ai: { mode: 'fixture', model: 'deterministic-fixture', calls: 0, inputTokens: 0, outputTokens: 0, elapsedMs: 0 } };
             report = { id, diagnosticId: diagnostic.id, revision: diagnostic.revision, opportunityId: selected.opportunity.id, inputsHash, unlocked: false, content: full };
             state.reports.push(report); save(state);

@@ -7,15 +7,15 @@ export const CATALOG_FRESHNESS_DAYS = seed.freshnessDays;
 export const catalog: Opportunity[] = seed.opportunities;
 
 const labels: Partial<Record<ProfileField, string>> = {
-  projectName: 'Proyecto', description: 'Descripción', audience: 'Usuarios objetivo', stage: 'Etapa', currentChain: 'Red actual', targetChain: 'Red objetivo',
-  team: 'Equipo', license: 'Licencia', users: 'Usuarios actuales', country: 'País', budgetUsd: 'Presupuesto USD', milestones: 'Hitos', publicBenefit: 'Beneficio público', solanaUse: 'Uso de Solana',
+  projectName: 'Project', description: 'Description', audience: 'Target users', stage: 'Stage', currentChain: 'Current network', targetChain: 'Target network',
+  team: 'Team', license: 'License', users: 'Current users', country: 'Country', budgetUsd: 'Budget USD', milestones: 'Milestones', publicBenefit: 'Public benefit', solanaUse: 'Solana use',
 };
 
 export function declaredEvidence(profile: CoachProfile, now = new Date()): Evidence[] {
   return Object.entries(labels).flatMap(([field, label]) => {
     const value = profile[field as ProfileField]?.trim();
     return value ? [{ id: `declared:${field}`, category: 'profile' as const, provenance: 'declared' as const,
-      claim: `${label} declarado: ${value}`, excerpt: value, url: `builder://profile/${field}`, observedAt: now.toISOString() }] : [];
+      claim: `${label} declared: ${value}`, excerpt: value, url: `builder://profile/${field}`, observedAt: now.toISOString() }] : [];
   });
 }
 
@@ -38,17 +38,17 @@ export function evaluateOpportunities(profile: CoachProfile, evidence: Evidence[
       const value = profile[criterion.field]?.trim() ?? '';
       const refs = evidence.filter(item => item.id === `declared:${criterion.field}`).map(item => item.id);
       if (!value) return { id: criterion.id, label: criterion.label, status: 'missing' as const,
-        reason: 'Dato pendiente. No se infiere del repositorio, horario ni otras respuestas.', evidenceIds: [] };
+        reason: 'Missing information. Not inferred from the repository, time zone or other answers.', evidenceIds: [] };
       if (criterion.allowed && !criterion.allowed.some(allowed => allowed.toLowerCase() === value.toLowerCase())) {
         return { id: criterion.id, label: criterion.label, status: 'incompatible' as const,
-          reason: `El dato declarado no coincide con este requisito (${criterion.allowed.join(', ')}).`, evidenceIds: refs };
+          reason: `Declared information does not match this requirement (${criterion.allowed.join(', ')}).`, evidenceIds: refs };
       }
-      if (/funcional|integraci[oó]n|demostrable|demo|repositorio.*(?:entrega|preparado)/i.test(criterion.label)) {
+      if (/functional|integration|demonstrable|demo|repository.*(?:submission|ready)|funcional|integraci[oó]n|demostrable|repositorio.*(?:entrega|preparado)/i.test(criterion.label)) {
         return { id: criterion.id, label: criterion.label, status: 'missing' as const,
-          reason: 'Revisión humana pendiente: la declaración y lectura estática no acreditan una demo ni integración funcionando. Instalar un SDK tampoco lo demuestra.', evidenceIds: refs };
+          reason: 'Human review pending: declarations and static inspection do not prove a working demo or integration. Installing an SDK does not prove it either.', evidenceIds: refs };
       }
       return { id: criterion.id, label: criterion.label, status: 'matched' as const,
-        reason: 'Dato declarado compatible con la orientación de la ficha; requiere confirmación y no acredita elegibilidad ni selección.', evidenceIds: refs };
+        reason: 'Declared information compatible with the listing guidance; confirmation is required and this does not establish eligibility or selection.', evidenceIds: refs };
     });
     const status = criteria.some(item => item.status === 'incompatible') ? 'incompatible' : criteria.some(item => item.status === 'missing') ? 'pending' : 'possible';
     return { opportunity, status, criteria } satisfies OpportunityMatch;
@@ -64,10 +64,10 @@ export function evaluateOpportunities(profile: CoachProfile, evidence: Evidence[
 }
 
 const questions: Partial<Record<ProfileField, string>> = {
-  projectName: '¿Cómo se llama el proyecto?', description: '¿Qué problema resuelve y qué construyes?', audience: '¿Quién lo usaría?',
-  team: '¿Quiénes forman el equipo y qué hace cada persona?', license: '¿Qué licencia y partes públicas tendrá?', users: '¿Qué usuarios reales tiene? Si aún no hay, indícalo.',
-  budgetUsd: '¿Cuánto solicitas en USD y cómo usarías esos fondos?', milestones: '¿Qué hitos medibles puedes entregar?',
-  publicBenefit: '¿Qué beneficio público ofrece para otros builders o usuarios?', solanaUse: '¿Cómo ayuda Solana a lograr el objetivo y qué integración puedes demostrar?',
+  projectName: 'What is the project called?', description: 'What problem does it solve and what are you building?', audience: 'Who would use it?',
+  team: 'Who is on the team and what does each person do?', license: 'Which license and public components will it have?', users: 'Which real users does it have? If none yet, say so.',
+  budgetUsd: 'How much are you requesting in USD and how would you use the funds?', milestones: 'Which measurable milestones can you deliver?',
+  publicBenefit: 'What public benefit does it offer other builders or users?', solanaUse: 'How does Solana help achieve the goal and which integration can you demonstrate?',
 };
 export function buildQuestions(profile: CoachProfile): { field: ProfileField; question: string }[] {
   return Object.entries(questions).filter(([field]) => !profile[field as ProfileField]?.trim()).map(([field, question]) => ({ field: field as ProfileField, question: question! }));

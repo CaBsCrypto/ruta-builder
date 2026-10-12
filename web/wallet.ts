@@ -34,13 +34,13 @@ export function createPartialSigner(wallet: Wallet, account: WalletAccount): Tra
     address: accountAddress,
     async signTransactions(transactions) {
       const outputs = await feature.signTransaction(...transactions.map(transaction => ({ account, chain: SOLANA_DEVNET_CHAIN as 'solana:devnet', transaction: new Uint8Array(getTransactionEncoder().encode(transaction)) })));
-      if (outputs.length !== transactions.length) throw new Error('La wallet no devolvió todas las firmas solicitadas.');
+      if (outputs.length !== transactions.length) throw new Error('The wallet did not return all requested signatures.');
       return outputs.map((output, index) => {
         const signed = getTransactionDecoder().decode(output.signedTransaction);
         const original = transactions[index]!;
-        if (signed.messageBytes.length !== original.messageBytes.length || signed.messageBytes.some((byte, offset) => byte !== original.messageBytes[offset])) throw new Error('La wallet modificó la transacción aprobada; no se enviará la autorización.');
+        if (signed.messageBytes.length !== original.messageBytes.length || signed.messageBytes.some((byte, offset) => byte !== original.messageBytes[offset])) throw new Error('The wallet changed the approved transaction; authorization will not be sent.');
         const signature = signed.signatures[accountAddress];
-        if (!signature || signature.length !== 64 || signature.every(byte => byte === 0)) throw new Error('La wallet no incluyó una firma válida de la cuenta.');
+        if (!signature || signature.length !== 64 || signature.every(byte => byte === 0)) throw new Error('The wallet did not include a valid account signature.');
         return { [accountAddress]: signature };
       });
     },
@@ -52,8 +52,8 @@ export async function payWithWallet({ wallet, reportId, resource, health }: {
   health: { network: string; mint: string; price: string; payTo: string; mode: string };
 }): Promise<SettlementOutcome> {
   const stateKey = `ruta:payment:${reportId}`;
-  if (['uncertain', 'sending', 'confirmed'].includes(sessionStorage.getItem(stateKey) || '')) return { status: 'uncertain', reason: 'Ya existe una autorización pendiente o confirmada. Comprueba el estado del informe sin solicitar otra firma.' };
-  if (health.mode !== 'devnet' || health.network !== NETWORK || health.mint !== MINT || health.price !== '0.01') return { status: 'rejected', reason: 'La configuración no corresponde al precio de 0,01 USDC y a la red devnet autorizados.' };
+  if (['uncertain', 'sending', 'confirmed'].includes(sessionStorage.getItem(stateKey) || '')) return { status: 'uncertain', reason: 'A pending or confirmed authorization already exists. Check report status without requesting another signature.' };
+  if (health.mode !== 'devnet' || health.network !== NETWORK || health.mint !== MINT || health.price !== '0.01') return { status: 'rejected', reason: 'The configuration does not match the authorized price of 0.01 USDC and devnet network.' };
   const url = new URL(resource, location.origin);
   if (url.origin !== location.origin || url.pathname !== `/reports/${encodeURIComponent(reportId)}` || url.search || url.hash) return { status: 'rejected', reason: 'El recurso de pago no pertenece a este informe y a este sitio.' };
   if (!isCompatibleWallet(wallet)) return { status: 'rejected', reason: 'La wallet no admite firma local de transacciones v0 en Solana devnet.' };
@@ -62,7 +62,7 @@ export async function payWithWallet({ wallet, reportId, resource, health }: {
     const connection = wallet.features['standard:connect'] as StandardConnectFeature['standard:connect'];
     const connected = await connection.connect();
     const account = connected.accounts.find(item => item.chains.includes(SOLANA_DEVNET_CHAIN) && item.features.includes(SolanaSignTransaction));
-    if (!account) return { status: 'rejected', reason: 'No se encontró una cuenta autorizada para Solana devnet.' };
+    if (!account) return { status: 'rejected', reason: 'No account authorized for Solana devnet was found.' };
     const client = new x402Client().register(NETWORK, new ExactSvmScheme(createPartialSigner(wallet, account), { rpcUrl: 'https://api.devnet.solana.com' }));
     const intentKey = `ruta:intent:${reportId}`;
     let idempotencyKey = sessionStorage.getItem(intentKey);
@@ -78,7 +78,7 @@ export async function payWithWallet({ wallet, reportId, resource, health }: {
     else { sessionStorage.removeItem(stateKey); sessionStorage.removeItem(intentKey); }
     return result;
   } catch (error) {
-    if (sessionStorage.getItem(stateKey) === 'sending') { sessionStorage.setItem(stateKey, 'uncertain'); return { status: 'uncertain', reason: 'La autorización pudo enviarse. Comprueba el estado sin firmar otra compra.' }; }
+    if (sessionStorage.getItem(stateKey) === 'sending') { sessionStorage.setItem(stateKey, 'uncertain'); return { status: 'uncertain', reason: 'Authorization may have been sent. Check the status without signing another purchase.' }; }
     return { status: 'rejected', reason: error instanceof Error ? error.message : 'La wallet no pudo preparar la firma.' };
   }
 }

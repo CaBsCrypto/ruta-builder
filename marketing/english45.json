@@ -1,0 +1,8 @@
+[
+ {"start":0,"duration":6,"step":"SOLANA FIRST","title":["Your idea.","A clearer path."],"copy":"From project context to an application draft.","image":"landing.png","voice":"Have an idea for Solana? Give it a clearer path with Ruta Builder."},
+ {"start":6,"duration":7,"step":"01 / YOUR PROJECT","title":["Start with","what you know."],"copy":"Your problem, your audience, your stage.","image":"project.png","voice":"Describe your project, your audience, and the stage you are at. Start without code."},
+ {"start":13,"duration":7,"step":"02 / YOUR CONTEXT","title":["Clear context.","Visible limits."],"copy":"Separate declarations, observations and unknowns.","image":"sources.png","voice":"Add context. See what is declared, what is observed, and what still needs confirmation."},
+ {"start":20,"duration":8,"step":"03 / YOUR OPPORTUNITY","title":["Requirements.","Next steps."],"copy":"Check official sources. Confirm eligibility.","image":"opportunities.png","voice":"Compare opportunity requirements, check official sources, and choose what to explore next."},
+ {"start":28,"duration":9,"step":"04 / YOUR APPLICATION","title":["Review. Edit.","Make it yours."],"copy":"A practical plan and a draft you can download.","image":"draft.png","voice":"Get a practical plan and an editable application draft. Review it, make it yours, and download."},
+ {"start":37,"duration":8,"step":"EXPLORE RUTA BUILDER","title":["Build with","a route in mind."],"copy":"Free public demo · open source MIT","voice":"This demo uses simulated sources, AI, and access. Real devnet purchase is pending. Explore Ruta Builder."}
+]

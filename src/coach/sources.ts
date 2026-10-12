@@ -61,13 +61,13 @@ export function isPublicAddress(input: string): boolean {
 export function validatePublicUrl(input: string | URL): URL {
   const url = new URL(input);
   const host = url.hostname.replace(/^\[|\]$/g, '').replace(/\.$/, '').toLowerCase();
-  if (url.protocol !== 'https:' || (url.port && url.port !== '443')) throw new Error('Sólo se permiten fuentes HTTPS en el puerto 443.');
-  if (url.username || url.password) throw new Error('No se permiten credenciales en la URL.');
+  if (url.protocol !== 'https:' || (url.port && url.port !== '443')) throw new Error('Only HTTPS sources on port 443 are allowed.');
+  if (url.username || url.password) throw new Error('Credentials are not allowed in the URL.');
   if (isIP(host) ? !isPublicAddress(host) : !host.includes('.') || /(?:^|\.)(?:localhost|local|internal|home|lan|onion|invalid)$/.test(host)) {
-    throw new Error('La fuente apunta a una dirección privada o reservada.');
+    throw new Error('The source points to a private or reserved address.');
   }
   if ([...url.searchParams.keys()].some(key => /(?:token|secret|password|credential|api[_-]?key|access[_-]?key)/i.test(key))) {
-    throw new Error('La URL contiene un parámetro de credencial.');
+    throw new Error('The URL contains a credential parameter.');
   }
   url.hash = '';
   return url;
@@ -112,13 +112,13 @@ export const defaultSourceTransport: SourceTransport = {
         headers: { 'User-Agent': 'SolanaBuilderCoach/0.1 (public source reader)', Accept: 'application/json,text/html,text/plain', 'Accept-Encoding': 'identity' },
       }, response => {
         const declaredSize = Number(response.headers['content-length']);
-        if (Number.isFinite(declaredSize) && declaredSize > options.maxBytes) { response.destroy(); req.destroy(new Error('La fuente supera el límite de tamaño.')); return; }
+        if (Number.isFinite(declaredSize) && declaredSize > options.maxBytes) { response.destroy(); req.destroy(new Error('The source exceeds the size limit.')); return; }
         if (response.headers['content-encoding'] && response.headers['content-encoding'] !== 'identity') { response.destroy(); req.destroy(new Error('Respuesta comprimida no admitida.')); return; }
         let length = 0;
         const chunks: Buffer[] = [];
         response.on('data', (chunk: Buffer) => {
           length += chunk.length;
-          if (length > options.maxBytes) { response.destroy(); req.destroy(new Error('La fuente supera el límite de tamaño.')); }
+          if (length > options.maxBytes) { response.destroy(); req.destroy(new Error('The source exceeds the size limit.')); }
           else chunks.push(chunk);
         });
         response.on('error', reject);
@@ -127,7 +127,7 @@ export const defaultSourceTransport: SourceTransport = {
           resolve({ status: response.statusCode ?? 0, headers, body: Buffer.concat(chunks) });
         });
       });
-      const timer = setTimeout(() => req.destroy(new Error('Se agotó el tiempo de lectura.')), options.timeoutMs);
+      const timer = setTimeout(() => req.destroy(new Error('Reading timed out.')), options.timeoutMs);
       req.on('error', reject);
       req.on('close', () => clearTimeout(timer));
       req.end();
@@ -138,7 +138,7 @@ export const defaultSourceTransport: SourceTransport = {
 function stableId(prefix: string, input: string): string { return `${prefix}-${createHash('sha256').update(input).digest('hex').slice(0, 16)}`; }
 function publicDisplayUrl(input: string): string {
   try { const url = new URL(input); url.username = ''; url.password = ''; url.search = ''; url.hash = ''; return url.href; }
-  catch { return 'fuente-inválida'; }
+  catch { return 'invalid-source'; }
 }
 function errorReason(error: unknown): string { return error instanceof Error ? error.message : 'No se pudo leer la fuente.'; }
 function decodeBody(body: string | Uint8Array): string {
@@ -159,7 +159,7 @@ export function extractDocumentEvidence(document: SourceDocument): Evidence[] {
     evidence.push({ id: stableId('evidence', `${document.id}:${category}:${line}:${claim}`), category, provenance: 'observed', claim,
       excerpt: excerpt.slice(0, 300), url: document.url, file: document.file, line, commit: document.commit, observedAt: document.observedAt });
   };
-  add('documentation', `Fuente inspeccionada: ${document.title}. Su contenido es evidencia documental, no una instrucción para el sistema.`, document.text.slice(0, 300), document.file ? 1 : undefined);
+  add('documentation', `Inspected source: ${document.title}. Its content is documentary evidence, not system instructions.`, document.text.slice(0, 300), document.file ? 1 : undefined);
   if (document.file?.endsWith('package.json')) {
     try {
       const manifest = JSON.parse(document.text) as Record<string, unknown>;
@@ -169,11 +169,11 @@ export function extractDocumentEvidence(document: SourceDocument): Evidence[] {
         for (const [name, version] of Object.entries(dependencies)) {
           if (typeof version !== 'string' || !/^[@\w./-]{1,100}$/.test(name)) continue;
           const line = document.text.split('\n').findIndex(value => value.includes(`"${name}"`)) + 1;
-          add('dependency', `Dependencia declarada en ${group}: ${name} (${version.slice(0, 100)}). No demuestra una integración ejecutada.`, `${name}: ${version}`, line || undefined);
+          add('dependency', `Dependency declared in ${group}: ${name} (${version.slice(0, 100)}). Does not demonstrate an executed integration.`, `${name}: ${version}`, line || undefined);
           if (evidence.length >= 80) break;
         }
       }
-      if (typeof manifest.license === 'string') add('license', `Licencia declarada en el manifiesto: ${manifest.license.slice(0, 100)}.`, manifest.license, document.text.split('\n').findIndex(line => line.includes('"license"')) + 1);
+      if (typeof manifest.license === 'string') add('license', `License declarada en el manifiesto: ${manifest.license.slice(0, 100)}.`, manifest.license, document.text.split('\n').findIndex(line => line.includes('"license"')) + 1);
     } catch { /* Invalid/sanitized manifest remains a documented coverage item, never executed. */ }
   }
   if (/(?:^|\/)Cargo\.toml$/.test(document.file ?? '')) {
@@ -183,24 +183,24 @@ export function extractDocumentEvidence(document: SourceDocument): Evidence[] {
       if (section) { dependencySection = /(?:^|\.)(?:dependencies|dev-dependencies|build-dependencies)$/.test(section[1]); continue; }
       if (!dependencySection) continue;
       const dependency = line.match(/^\s*([\w-]+)\s*=\s*(.+)$/);
-      if (dependency) add('dependency', `Dependencia declarada en Cargo.toml: ${dependency[1]}. No demuestra una integración ejecutada.`, line.trim(), index + 1);
+      if (dependency) add('dependency', `Dependency declared in Cargo.toml: ${dependency[1]}. Does not demonstrate an executed integration.`, line.trim(), index + 1);
       if (evidence.length >= 80) break;
     }
   }
   if (/(?:^|\/)requirements(?:[\w.-]*)\.txt$/i.test(document.file ?? '')) {
     for (const [index, line] of document.text.split('\n').entries()) {
       const dependency = line.match(/^\s*([\w.-]+)(?:\[[\w, -]+\])?\s*(?:[=<>!~]|$)/);
-      if (dependency) add('dependency', `Dependencia declarada en requirements: ${dependency[1]}. No demuestra una integración ejecutada.`, line.trim(), index + 1);
+      if (dependency) add('dependency', `Dependency declared in requirements: ${dependency[1]}. Does not demonstrate an executed integration.`, line.trim(), index + 1);
       if (evidence.length >= 80) break;
     }
   }
   for (const [index, line] of document.text.split('\n').entries()) {
     if (line === '[CREDENCIAL OMITIDA]') continue;
     if (/\b(?:from\s+(?:['"]|[\w.]+\s+import)|require\(['"]|import\s+(?:['"]|[\w.]+)|use\s+[\w:]+)/.test(line) && /(?:solana|anchor|x402|helius|squads|openai|anthropic|supabase)/i.test(line)) {
-      add('code_reference', 'Referencia estática a un SDK o servicio; funcionamiento y consumo no verificados.', line.trim(), index + 1);
+      add('code_reference', 'Static SDK or service reference; functionality and usage unverified.', line.trim(), index + 1);
     }
     if (/(?:rpc\.\w+|api\.(?:devnet|mainnet-beta)\.solana\.com|helius-rpc\.com|supabase\.co)/i.test(line)) {
-      add('infrastructure', 'Configuración o referencia documental a infraestructura; consumo y coste desconocidos.', line.trim(), index + 1);
+      add('infrastructure', 'Infrastructure configuration or documentation reference; usage and cost unknown.', line.trim(), index + 1);
     }
     if (evidence.length >= 100) break;
   }
@@ -216,34 +216,34 @@ export async function inspectSources(profile: CoachProfile, options: InspectOpti
   const deadline = start + OPERATION_MS;
   async function bounded<T>(promise: Promise<T>): Promise<T> {
     const remaining = deadline - performance.now();
-    if (remaining <= 0) throw new Error('Se agotó el tiempo total de inspección.');
+    if (remaining <= 0) throw new Error('Total inspection time limit reached.');
     let timer: ReturnType<typeof setTimeout> | undefined;
-    try { return await Promise.race([promise, new Promise<never>((_resolve, reject) => { timer = setTimeout(() => reject(new Error('Se agotó el tiempo total de inspección.')), remaining); })]); }
+    try { return await Promise.race([promise, new Promise<never>((_resolve, reject) => { timer = setTimeout(() => reject(new Error('Total inspection time limit reached.')), remaining); })]); }
     finally { if (timer) clearTimeout(timer); }
   }
   async function fetchText(input: string, allowedOrigin?: string): Promise<{ text: string; url: URL; headers: Record<string, string> }> {
     let url = validatePublicUrl(input);
     for (let redirect = 0; redirect <= 3; redirect++) {
-      if (allowedOrigin && url.origin !== allowedOrigin) throw new Error('El redirect salió del sitio permitido.');
-      if (result.metrics.requests >= REQUEST_LIMIT || result.metrics.bytes >= TOTAL_LIMIT) throw new Error('Se agotó el límite total de inspección.');
+      if (allowedOrigin && url.origin !== allowedOrigin) throw new Error('The redirect left the allowed site.');
+      if (result.metrics.requests >= REQUEST_LIMIT || result.metrics.bytes >= TOTAL_LIMIT) throw new Error('Total inspection limit reached.');
       const host = url.hostname.replace(/^\[|\]$/g, '');
       const addresses = isIP(host) ? [{ address: host, family: isIP(host) as 4 | 6 }] : await bounded(transport.resolve(host));
-      if (!addresses.length || addresses.some(entry => !isPublicAddress(entry.address) || isIP(entry.address) !== entry.family)) throw new Error('DNS devolvió una dirección privada, reservada o inválida.');
+      if (!addresses.length || addresses.some(entry => !isPublicAddress(entry.address) || isIP(entry.address) !== entry.family)) throw new Error('DNS returned a private, reserved or invalid address.');
       const remaining = deadline - performance.now();
-      if (remaining <= 0) throw new Error('Se agotó el tiempo total de inspección.');
+      if (remaining <= 0) throw new Error('Total inspection time limit reached.');
       const maxBytes = Math.min(FILE_LIMIT, TOTAL_LIMIT - result.metrics.bytes);
       result.metrics.requests++;
       const response = await bounded(transport.request(url, { ...addresses[0], maxBytes, timeoutMs: Math.max(1, Math.min(8_000, remaining)) }));
       const byteLength = typeof response.body === 'string' ? Buffer.byteLength(response.body) : response.body.byteLength;
       result.metrics.bytes += byteLength;
-      if (byteLength > maxBytes || result.metrics.bytes > TOTAL_LIMIT) throw new Error('La fuente supera el límite de tamaño.');
+      if (byteLength > maxBytes || result.metrics.bytes > TOTAL_LIMIT) throw new Error('The source exceeds the size limit.');
       const headers = Object.fromEntries(Object.entries(response.headers).map(([key, value]) => [key.toLowerCase(), value]));
       if ([301, 302, 303, 307, 308].includes(response.status)) {
         if (redirect === 3 || !headers.location) throw new Error('Redirects excesivos o sin destino.');
         url = validatePublicUrl(new URL(headers.location, url));
         continue;
       }
-      if (response.status !== 200) throw new Error(response.status === 403 || response.status === 429 ? `Fuente no disponible o límite de solicitudes (HTTP ${response.status}).` : `Fuente no disponible (HTTP ${response.status}).`);
+      if (response.status !== 200) throw new Error(response.status === 403 || response.status === 429 ? `Source unavailable or request limit reached (HTTP ${response.status}).` : `Source unavailable (HTTP ${response.status}).`);
       return { text: decodeBody(response.body), url, headers };
     }
     throw new Error('Redirects excesivos.');
@@ -251,7 +251,7 @@ export async function inspectSources(profile: CoachProfile, options: InspectOpti
   function omit(url: string, reason: string, file?: string) { result.coverage.omitted.push({ url: publicDisplayUrl(url), reason, file }); }
   function document(url: string, title: string, text: string, file?: string, commit?: string) {
     const cleaned = sanitizeSourceText(text);
-    if (cleaned !== text) omit(url, 'Se omitieron posibles credenciales conservando posiciones de líneas.', file);
+    if (cleaned !== text) omit(url, 'Possible credentials omitted while preserving line positions.', file);
     const item: SourceDocument = { id: stableId('source', `${url}:${commit ?? ''}`), url, title, text: cleaned, observedAt, file, commit };
     result.documents.push(item);
     result.evidence.push(...extractDocumentEvidence(item));
@@ -270,7 +270,7 @@ export async function inspectSources(profile: CoachProfile, options: InspectOpti
           try {
             const response = await fetchText(next, first.origin);
             const contentType = response.headers['content-type'] ?? '';
-            if (!/^(?:text\/html|text\/plain|application\/xhtml\+xml)/i.test(contentType)) throw new Error('La página no es HTML o texto público.');
+            if (!/^(?:text\/html|text\/plain|application\/xhtml\+xml)/i.test(contentType)) throw new Error('The page is not public HTML or text.');
             const isHtml = !/^text\/plain/i.test(contentType);
             const title = isHtml ? stripHtml(response.text.match(/<title\b[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? response.url.hostname) : response.url.hostname;
             document(response.url.href, title.slice(0, 200), isHtml ? stripHtml(response.text) : response.text);
@@ -283,37 +283,37 @@ export async function inspectSources(profile: CoachProfile, options: InspectOpti
             }
           } catch (error) { result.coverage.failures.push({ url: publicDisplayUrl(next), reason: errorReason(error) }); }
         }
-        if (queue.length) omit(first.href, `Límite de tres páginas: ${queue.length} enlaces descubiertos no inspeccionados; no representa todo el sitio.`);
+        if (queue.length) omit(first.href, `Three-page limit: ${queue.length} discovered links not inspected; this does not represent the entire site.`);
       } catch (error) { result.coverage.failures.push({ url: publicDisplayUrl(profile.websiteUrl), reason: errorReason(error) }); }
-    } else omit('https://sources.example/', 'No se aportó una web; el proyecto puede estar en etapa de idea.');
+    } else omit('https://sources.example/', 'No website supplied; the project may be at the idea stage.');
 
     if (profile.repositoryUrl.trim()) {
       try {
         const repo = validatePublicUrl(profile.repositoryUrl.trim());
         const parts = repo.pathname.replace(/\/$/, '').split('/').filter(Boolean);
         if (repo.hostname !== 'github.com' || parts.length < 2 || parts.some(part => !/^[\w.-]+$/.test(part) || part === '.' || part === '..')
-          || (parts.length !== 2 && !(parts.length === 4 && parts[2] === 'tree' && /^[a-f\d]{40}$/i.test(parts[3])))) throw new Error('Se requiere un repositorio público github.com/owner/repo, opcionalmente /tree/commit de 40 caracteres.');
+          || (parts.length !== 2 && !(parts.length === 4 && parts[2] === 'tree' && /^[a-f\d]{40}$/i.test(parts[3])))) throw new Error('A public github.com/owner/repo repository is required, optionally /tree/ with a 40-character commit.');
         const owner = parts[0]; const name = parts[1].replace(/\.git$/, '');
         const api = `https://api.github.com/repos/${encodeURIComponent(owner)}/${encodeURIComponent(name)}`;
         const metadata = JSON.parse((await fetchText(api, 'https://api.github.com')).text) as { private?: boolean; default_branch?: unknown };
-        if (metadata.private !== false || typeof metadata.default_branch !== 'string') throw new Error('No se confirmó que el repositorio sea público.');
+        if (metadata.private !== false || typeof metadata.default_branch !== 'string') throw new Error('The repository could not be confirmed as public.');
         const ref = parts[3] ?? metadata.default_branch;
         const commitData = JSON.parse((await fetchText(`${api}/commits/${encodeURIComponent(ref)}`, 'https://api.github.com')).text) as { sha?: string; commit?: { tree?: { sha?: string } } };
         const commit = commitData.sha;
         const treeSha = commitData.commit?.tree?.sha;
-        if (!commit || !/^[a-f\d]{40}$/i.test(commit) || !treeSha || !/^[a-f\d]{40}$/i.test(treeSha) || (parts[3] && commit !== parts[3])) throw new Error('GitHub no devolvió un commit y árbol válidos.');
+        if (!commit || !/^[a-f\d]{40}$/i.test(commit) || !treeSha || !/^[a-f\d]{40}$/i.test(treeSha) || (parts[3] && commit !== parts[3])) throw new Error('GitHub did not return a valid commit and tree.');
         result.repositoryCommit = commit;
         const treeData = JSON.parse((await fetchText(`${api}/git/trees/${treeSha}?recursive=1`, 'https://api.github.com')).text) as { truncated?: boolean; tree?: { path?: string; type?: string; mode?: string; size?: number; sha?: string }[] };
-        if (!Array.isArray(treeData.tree)) throw new Error('GitHub no devolvió un árbol de archivos.');
-        if (treeData.truncated) omit(repo.href, 'GitHub truncó el árbol; faltan rutas y la cobertura es parcial.');
+        if (!Array.isArray(treeData.tree)) throw new Error('GitHub did not return a file tree.');
+        if (treeData.truncated) omit(repo.href, 'GitHub truncated the tree; paths are missing and coverage is partial.');
         const eligible: { path: string; size?: number }[] = [];
         const excluded: Record<string, number> = {};
         const count = (reason: string) => { excluded[reason] = (excluded[reason] ?? 0) + 1; };
         for (const item of treeData.tree) {
           if (item.type !== 'blob' || !item.path) continue;
-          if (item.mode === '120000') { count('enlaces simbólicos'); continue; }
-          if (!isInspectablePath(item.path)) { count('archivos binarios, generados, dependencias vendorizadas o rutas sensibles'); continue; }
-          if (typeof item.size === 'number' && item.size > FILE_LIMIT) { count('archivos de más de 256 KiB'); continue; }
+          if (item.mode === '120000') { count('symbolic links'); continue; }
+          if (!isInspectablePath(item.path)) { count('binary or generated files, vendored dependencies or sensitive paths'); continue; }
+          if (typeof item.size === 'number' && item.size > FILE_LIMIT) { count('files over 256 KiB'); continue; }
           eligible.push({ path: item.path, size: item.size });
         }
         const priority = (path: string) => {
@@ -324,8 +324,8 @@ export async function inspectSources(profile: CoachProfile, options: InspectOpti
           return /\.(?:ts|tsx|js|jsx|rs|py|go|sol|move)$/.test(base) ? 4 : 5;
         };
         eligible.sort((a, b) => priority(a.path) - priority(b.path) || a.path.localeCompare(b.path));
-        for (const [reason, countValue] of Object.entries(excluded)) omit(repo.href, `Excluidos ${countValue}: ${reason}.`);
-        if (eligible.length > 30) omit(repo.href, `Límite de 30 archivos: ${eligible.length - 30} archivos de texto elegibles no inspeccionados.`);
+        for (const [reason, countValue] of Object.entries(excluded)) omit(repo.href, `Excluded ${countValue}: ${reason}.`);
+        if (eligible.length > 30) omit(repo.href, `30-file limit: ${eligible.length - 30} eligible text files not inspected.`);
         for (const item of eligible.slice(0, 30)) {
           const encodedPath = item.path.split('/').map(encodeURIComponent).join('/');
           const rawUrl = `https://raw.githubusercontent.com/${encodeURIComponent(owner)}/${encodeURIComponent(name)}/${commit}/${encodedPath}`;
@@ -337,7 +337,7 @@ export async function inspectSources(profile: CoachProfile, options: InspectOpti
         }
         if (!eligible.length) omit(repo.href, 'No se encontraron archivos de texto inspeccionables.');
       } catch (error) { result.coverage.failures.push({ url: publicDisplayUrl(profile.repositoryUrl), reason: errorReason(error) }); }
-    } else omit('https://sources.example/', 'No se aportó un repositorio; las declaraciones no acreditan implementación.');
+    } else omit('https://sources.example/', 'No repository supplied; declarations do not establish implementation.');
   } finally {
     result.coverage.complete = result.coverage.failures.length === 0 && result.coverage.omitted.length === 0;
     result.metrics.elapsedMs = Math.round(performance.now() - start);

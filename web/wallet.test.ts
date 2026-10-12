@@ -34,11 +34,11 @@ test('wallet partial signer requests local devnet signature and returns only acc
 });
 test('wallet cannot modify transaction contents while authorizing a fixed resource', async () => {
   const signer = createPartialSigner(wallet(async (...inputs) => inputs.map(input => ({ signedTransaction: signedBytes(input, true) }))), account);
-  await assert.rejects(signer.signTransactions([transaction()]), /modificó la transacción/);
+  await assert.rejects(signer.signTransactions([transaction()]), /changed the approved transaction/);
 });
 test('wallet rejects missing signed outputs before authorization can be sent', async () => {
   const signer = createPartialSigner(wallet(async () => []), account);
-  await assert.rejects(signer.signTransactions([transaction()]), /no devolvió todas las firmas/);
+  await assert.rejects(signer.signTransactions([transaction()]), /did not return all requested signatures/);
 });
 test('wallet discovery excludes unsupported chain and unsupported transaction version', () => {
   const original = wallet(async () => []);

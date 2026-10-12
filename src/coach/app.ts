@@ -161,7 +161,7 @@ export async function startCoachServer(options: CoachServerOptions) {
     const selected = matches.find(match => match.opportunity.id === req.body?.opportunityId);
     if (!selected) { res.status(422).json({ error: item.profile.targetChain !== 'solana' ? 'ecosystem_not_supported' : 'opportunity_unavailable' }); return; }
     if (aiMode === 'live' && !options.apiKey) { res.status(503).json({ error: 'OPENAI_API_KEY_required' }); return; }
-    const inputsHash = canonicalHash({ profile: item.profile, evidence: item.evidence, inspection: item.inspection, matches, catalogVersion: CATALOG_VERSION });
+    const inputsHash = canonicalHash({ profile: item.profile, evidence: item.evidence, inspection: item.inspection, matches, catalogVersion: CATALOG_VERSION, locale: 'en', generationVersion: 2 });
     let report = store.findReport(item.id, item.revision, selected.opportunity.id, inputsHash);
     if (report && report.state !== 'failed') { res.status(202).json({ id: report.id, state: report.state, resource: `${origin}/reports/${report.id}` }); return; }
     if (jobs.size >= 8 || shuttingDown) { res.status(429).json({ error: 'preparation_limit' }); return; }
@@ -171,10 +171,10 @@ export async function startCoachServer(options: CoachServerOptions) {
     launch(async () => {
       try {
         const generated = await (options.prepareContent ?? prepareCoachContent)({ profile: item.profile, evidence: item.evidence, matches, selectedOpportunity: selected.opportunity },
-          { mode: aiMode, apiKey: options.apiKey, onCall: () => store.consumeAiCall(item.id, item.revision) });
+          { mode: aiMode, locale: 'en', apiKey: options.apiKey, onCall: () => store.consumeAiCall(item.id, item.revision) });
         if (!validateCoachContent(generated.content, item.evidence)) throw new Error('invalid_report_content');
         const content: CoachReport = { schemaVersion: 'builder-coach-report/v1', id: snapshot.id, diagnosticId: item.id, revision: item.revision,
-          createdAt: snapshot.createdAt, inputsHash, catalogVersion: CATALOG_VERSION, title: `Plan y postulación · ${item.profile.projectName}`,
+          createdAt: snapshot.createdAt, inputsHash, catalogVersion: CATALOG_VERSION, title: `Plan and application · ${item.profile.projectName}`,
           profile: item.profile, evidence: item.evidence, coverage: item.inspection.coverage, opportunities: matches,
           selectedOpportunity: selected.opportunity, content: generated.content, ai: generated.telemetry };
         JSON.parse(JSON.stringify(content));

@@ -1,0 +1,64 @@
+[
+  {
+    "start": 0,
+    "duration": 8,
+    "label": "SOLANA PRIMERO",
+    "title": "De una idea.<br>A una postulación.",
+    "copy": "Un acompañante para ordenar tu proyecto y preparar el siguiente paso.",
+    "voice": "Ruta Builder helps prepare Solana applications. Demo sources and content are simulated. No payments."
+  },
+  {
+    "start": 8,
+    "duration": 10,
+    "label": "01 / TU PROYECTO",
+    "title": "Primero,<br>el contexto.",
+    "copy": "Qué construyes, para quién y en qué etapa estás. Una idea también puede empezar aquí.",
+    "image": "01-proyecto.png",
+    "voice": "Describe what you are building, who it is for, and its stage. Choose your current network and target programme. You can begin without a repository."
+  },
+  {
+    "start": 18,
+    "duration": 12,
+    "label": "02 / FUENTES Y CONFIRMACIÓN",
+    "title": "Fuentes claras.<br>Límites visibles.",
+    "copy": "Esta demo guarda URLs como declaraciones, sin visitarlas. El lector limitado está en el backend local.",
+    "image": "02-fuentes.png",
+    "voice": "Add a website and GitHub. These links remain declarations, without inspection. Confirm facts and leave unknown information incomplete. The source reader runs in the local backend."
+  },
+  {
+    "start": 30,
+    "duration": 13,
+    "label": "03 / OPORTUNIDADES",
+    "title": "Revisa requisitos.<br>No promesas.",
+    "copy": "Fuente oficial, datos pendientes y catálogo del 11 de octubre de 2026. Elegibilidad por confirmar.",
+    "image": "04-oportunidades.png",
+    "voice": "Compare the declared profile with programme requirements and review the official source. The catalogue is a snapshot from October eleventh, twenty twenty-six. It does not check current availability or guarantee eligibility."
+  },
+  {
+    "start": 43,
+    "duration": 14,
+    "label": "04 / PLAN Y BORRADOR",
+    "title": "Un borrador<br>para hacer tuyo.",
+    "copy": "Revisa, edita y descarga. La copia se recupera en este navegador y el informe original se conserva.",
+    "image": "06-borrador.png",
+    "voice": "Prepare a report using a local template, then open it through free simulated access. Review the plan, edit your draft and download Markdown. Changes remain in this browser, while the original report is preserved. You decide what to submit."
+  },
+  {
+    "start": 57,
+    "duration": 10,
+    "label": "SOLANA EN EL BACKEND",
+    "title": "x402 + USDC.<br>Validación pendiente.",
+    "copy": "El intercambio HTTP se probó con un facilitador simulado. Firma, liquidación real y llamada a OpenAI pendientes.",
+    "flow": true,
+    "voice": "X four oh two and USDC are implemented locally, with simulated tests. Real signing, devnet settlement and OpenAI calls remain unvalidated."
+  },
+  {
+    "start": 67,
+    "duration": 8,
+    "label": "EXPLORA RUTA BUILDER",
+    "title": "Tu proyecto.<br>Tu siguiente paso.",
+    "copy": "Demo sin cuenta ni wallet · código MIT · cabs, participante individual.",
+    "cta": true,
+    "voice": "Explore the public demo and MIT source code. This is a prototype walkthrough. The real devnet purchase remains deferred."
+  }
+]

@@ -1,60 +1,215 @@
 {
-  "version": "coach-solana-2026-10-11-v1",
+  "version": "coach-solana-2026-10-11-v1-en-v2",
   "verifiedOn": "2026-10-11",
   "timezone": "America/Santiago",
   "freshnessDays": 14,
-  "notes": "Fichas verificadas y selección sujeta al organizador. Una declaración del builder no prueba elegibilidad. El inventario histórico research/opportunities.json se conserva.",
+  "notes": "Historical listings reviewed on October 11, 2026. Organizers confirm eligibility. Builder declarations do not establish eligibility. Original research is preserved.",
   "opportunities": [
     {
-      "id": "solana-foundation-standard", "title": "Solana Foundation · Standard grant", "ecosystem": "solana", "kind": "grant", "status": "active", "deadline": null, "verifiedOn": "2026-10-11", "sourceUrl": "https://solana.org/grants-funding", "reward": "Financiación por hitos; importe sujeto a evaluación, sin concesión garantizada.", "description": "Evaluación continua de bienes públicos: contribución de código abierto, oferta gratuita útil o prueba de concepto. Los proyectos principalmente comerciales deben considerar convertible grants.",
+      "id": "solana-foundation-standard",
+      "title": "Solana Foundation · Standard grant",
+      "ecosystem": "solana",
+      "kind": "grant",
+      "status": "active",
+      "deadline": null,
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://solana.org/grants-funding",
+      "reward": "Milestone funding; amount subject to review, with no guaranteed award.",
+      "description": "Ongoing review of public goods: open-source contributions, useful free offerings or proofs of concept. Primarily commercial projects should consider convertible grants.",
       "criteria": [
-        { "id": "public-good", "label": "Explicar beneficio público para Solana", "field": "publicBenefit" },
-        { "id": "why-solana", "label": "Justificar por qué Solana aporta al proyecto", "field": "solanaUse" },
-        { "id": "open-source", "label": "Explicar licencia y acceso comunitario a las partes utilizables", "field": "license" },
-        { "id": "budget", "label": "Presupuesto estructurado y uso de fondos", "field": "budgetUsd" },
-        { "id": "milestones", "label": "Hitos medibles relacionados con impacto", "field": "milestones" }
+        {
+          "id": "public-good",
+          "label": "Explain the public benefit for Solana",
+          "field": "publicBenefit"
+        },
+        {
+          "id": "why-solana",
+          "label": "Explain why Solana benefits the project",
+          "field": "solanaUse"
+        },
+        {
+          "id": "open-source",
+          "label": "Explain licensing and community access to reusable components",
+          "field": "license"
+        },
+        {
+          "id": "budget",
+          "label": "Structured budget and use of funds",
+          "field": "budgetUsd"
+        },
+        {
+          "id": "milestones",
+          "label": "Measurable milestones related to impact",
+          "field": "milestones"
+        }
       ]
     },
     {
-      "id": "solana-foundation-convertible", "title": "Solana Foundation · Convertible grant", "ecosystem": "solana", "kind": "grant", "status": "active", "deadline": null, "verifiedOn": "2026-10-11", "sourceUrl": "https://solana.org/grants-funding", "reward": "Convertible grant por hitos; términos e importe sujetos a evaluación.", "description": "Bien público con componente comercial. No es un premio ni financiación garantizada; confirmar los términos de conversión con Foundation.",
+      "id": "solana-foundation-convertible",
+      "title": "Solana Foundation · Convertible grant",
+      "ecosystem": "solana",
+      "kind": "grant",
+      "status": "active",
+      "deadline": null,
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://solana.org/grants-funding",
+      "reward": "Milestone-based convertible grant; terms and amount subject to review.",
+      "description": "Public good with a commercial component. This is not a prize or guaranteed funding; confirm conversion terms with the Foundation.",
       "criteria": [
-        { "id": "public-good", "label": "Explicar el beneficio público y componente comercial", "field": "publicBenefit" },
-        { "id": "why-solana", "label": "Justificar el uso de Solana", "field": "solanaUse" },
-        { "id": "budget", "label": "Presupuesto estructurado y uso de fondos", "field": "budgetUsd" },
-        { "id": "milestones", "label": "Hitos medibles", "field": "milestones" }
+        {
+          "id": "public-good",
+          "label": "Explain the public benefit and commercial component",
+          "field": "publicBenefit"
+        },
+        {
+          "id": "why-solana",
+          "label": "Explain the use of Solana",
+          "field": "solanaUse"
+        },
+        {
+          "id": "budget",
+          "label": "Structured budget and use of funds",
+          "field": "budgetUsd"
+        },
+        {
+          "id": "milestones",
+          "label": "Measurable milestones",
+          "field": "milestones"
+        }
       ]
     },
     {
-      "id": "encode-solana-2026", "title": "Encode Solana Hackathon 2026", "ecosystem": "solana", "kind": "accelerator", "status": "active", "deadline": "2026-11-09T11:59:00Z", "verifiedOn": "2026-10-11", "sourceUrl": "https://www.encodeclub.com/programmes/solana-hackathon-2026", "reward": "Plazas en aceleradora; no se publica premio en efectivo.", "description": "Construcción del 12 de octubre al 8 de noviembre. Consumer App y Best Use of x402 on Solana; individual o hasta cinco personas. Devnet aceptada; declarar código previo. Inscripción hasta 1 de noviembre. Demo funcional, repositorio, video de 2 a 4 minutos y explicación de Solana.",
+      "id": "encode-solana-2026",
+      "title": "Encode Solana Hackathon 2026",
+      "ecosystem": "solana",
+      "kind": "accelerator",
+      "status": "active",
+      "deadline": "2026-11-09T11:59:00Z",
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://www.encodeclub.com/programmes/solana-hackathon-2026",
+      "reward": "Accelerator places; no cash prize published.",
+      "description": "Build window: October 12 to November 8. Consumer App and Best Use of x402 on Solana; solo or up to five people. Devnet accepted; disclose prior code. Registration until November 1. Functional demo, repository, 2–4 minute video and explanation of Solana.",
       "criteria": [
-        { "id": "team", "label": "Confirmar equipo individual o máximo cinco integrantes", "field": "team" },
-        { "id": "why-solana", "label": "Uso funcional de Solana; x402 debe entregar el recurso tras verificar/liquidar", "field": "solanaUse" },
-        { "id": "repo", "label": "Repositorio y README para entrega", "field": "repositoryUrl" },
-        { "id": "milestones", "label": "Plan de demo y trabajo durante la ventana del hackathon", "field": "milestones" }
+        {
+          "id": "team",
+          "label": "Confirm a solo team or up to five members",
+          "field": "team"
+        },
+        {
+          "id": "why-solana",
+          "label": "Functional use of Solana; x402 delivers the resource after verification/settlement",
+          "field": "solanaUse"
+        },
+        {
+          "id": "repo",
+          "label": "Repository and README for submission",
+          "field": "repositoryUrl"
+        },
+        {
+          "id": "milestones",
+          "label": "Demo and development plan during the hackathon window",
+          "field": "milestones"
+        }
       ]
     },
     {
-      "id": "colosseum-cwf", "title": "Colosseum Crypto World's Fair · Solana", "ecosystem": "solana", "kind": "prize", "status": "active", "deadline": "2026-10-13T06:59:00Z", "verifiedOn": "2026-10-11", "sourceUrl": "https://colosseum.com/worldsfair", "reward": "Premios competitivos; inversión de aceleradora separada y sujeta a selección.", "description": "Edición próxima a cerrar. Requiere integración funcional y cumplir reglas oficiales. No presupuestar premios ni inversión como ingresos.",
+      "id": "colosseum-cwf",
+      "title": "Colosseum Crypto World's Fair · Solana",
+      "ecosystem": "solana",
+      "kind": "prize",
+      "status": "active",
+      "deadline": "2026-10-13T06:59:00Z",
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://colosseum.com/worldsfair",
+      "reward": "Competitive prizes; accelerator investment is separate and subject to selection.",
+      "description": "This edition is close to its deadline. Requires a working integration and compliance with official rules. Do not budget prizes or investment as revenue.",
       "criteria": [
-        { "id": "why-solana", "label": "Integración funcional con Solana", "field": "solanaUse" },
-        { "id": "stage", "label": "Proyecto demostrable antes del cierre", "field": "stage", "allowed": ["prototype", "mvp", "live"] },
-        { "id": "repo", "label": "Repositorio y demo preparados", "field": "repositoryUrl" }
+        {
+          "id": "why-solana",
+          "label": "Functional integration with Solana",
+          "field": "solanaUse"
+        },
+        {
+          "id": "stage",
+          "label": "Demonstrable project before the deadline",
+          "field": "stage",
+          "allowed": [
+            "prototype",
+            "mvp",
+            "live"
+          ]
+        },
+        {
+          "id": "repo",
+          "label": "Repository and demo ready",
+          "field": "repositoryUrl"
+        }
       ]
     },
     {
-      "id": "dev3pack-hackathon", "title": "Dev3pack Global Hackathon", "ecosystem": "solana", "kind": "prize", "status": "unverified", "deadline": null, "verifiedOn": "2026-10-11", "sourceUrl": "https://hack.dev3pack.xyz/faq", "reward": "Tracks y premios pendientes de anuncio.", "description": "27–29 noviembre; orientación universitaria. Elegibilidad personal y plazo exacto no confirmados: no recomendar como abierta.", "criteria": []
+      "id": "dev3pack-hackathon",
+      "title": "Dev3pack Global Hackathon",
+      "ecosystem": "solana",
+      "kind": "prize",
+      "status": "unverified",
+      "deadline": null,
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://hack.dev3pack.xyz/faq",
+      "reward": "Tracks and prizes not announced yet.",
+      "description": "November 27–29; university focus. Individual eligibility and exact deadline unconfirmed: do not recommend as open.",
+      "criteria": []
     },
     {
-      "id": "dev3pack-bridge", "title": "Dev3pack Bridge", "ecosystem": "solana", "kind": "accelerator", "status": "unverified", "deadline": null, "verifiedOn": "2026-10-11", "sourceUrl": "https://bridge.dev3pack.xyz/", "reward": "Programa gratuito, 0% equity; sin premio en efectivo publicado.", "description": "Desde 7 diciembre, ocho semanas. Selección y admisión individual pendientes de confirmar.", "criteria": []
+      "id": "dev3pack-bridge",
+      "title": "Dev3pack Bridge",
+      "ecosystem": "solana",
+      "kind": "accelerator",
+      "status": "unverified",
+      "deadline": null,
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://bridge.dev3pack.xyz/",
+      "reward": "Free program, 0% equity; no cash prize published.",
+      "description": "Starting December 7, eight weeks. Selection and individual admission to be confirmed.",
+      "criteria": []
     },
     {
-      "id": "agentic-engineering", "title": "Superteam Agentic Engineering", "ecosystem": "solana", "kind": "grant", "status": "paused", "deadline": null, "verifiedOn": "2026-10-11", "sourceUrl": "https://superteam.fun/earn/grants/agentic-engineering/", "reward": "200 USDG para herramientas de programación IA, sujeto a aprobación y tramos.", "description": "Applications Paused en la ficha individual verificada; se excluye de recomendaciones.", "criteria": []
+      "id": "agentic-engineering",
+      "title": "Superteam Agentic Engineering",
+      "ecosystem": "solana",
+      "kind": "grant",
+      "status": "paused",
+      "deadline": null,
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://superteam.fun/earn/grants/agentic-engineering/",
+      "reward": "200 USDG for AI coding tools, subject to approval and installments.",
+      "description": "Applications Paused on the individually reviewed listing; excluded from recommendations.",
+      "criteria": []
     },
     {
-      "id": "colosseum-eternal", "title": "Colosseum Eternal", "ecosystem": "solana", "kind": "accelerator", "status": "paused", "deadline": null, "verifiedOn": "2026-10-11", "sourceUrl": "https://colosseum.com/eternal", "reward": "Programa sujeto a selección; no asumir financiación.", "description": "Nuevos sprints pausados según investigación verificada; se excluye de recomendaciones.", "criteria": []
+      "id": "colosseum-eternal",
+      "title": "Colosseum Eternal",
+      "ecosystem": "solana",
+      "kind": "accelerator",
+      "status": "paused",
+      "deadline": null,
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://colosseum.com/eternal",
+      "reward": "Selective program; do not assume funding.",
+      "description": "New sprints paused according to the reviewed research; excluded from recommendations.",
+      "criteria": []
     },
     {
-      "id": "superteam-grants-directory", "title": "Superteam · Directorio de grants", "ecosystem": "solana", "kind": "grant", "status": "unverified", "deadline": null, "verifiedOn": "2026-10-11", "sourceUrl": "https://superteam.fun/earn/grants", "reward": "Depende de cada ficha; el directorio no acredita inscripción abierta.", "description": "Requiere verificar una ficha individual y sus requisitos antes de recomendarla.", "criteria": []
+      "id": "superteam-grants-directory",
+      "title": "Superteam · Grants directory",
+      "ecosystem": "solana",
+      "kind": "grant",
+      "status": "unverified",
+      "deadline": null,
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://superteam.fun/earn/grants",
+      "reward": "Depends on each listing; the directory does not establish open applications.",
+      "description": "Verify an individual listing and its requirements before recommending it.",
+      "criteria": []
     }
   ]
 }

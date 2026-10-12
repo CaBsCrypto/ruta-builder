@@ -4,7 +4,7 @@
   "private": true,
   "license": "MIT",
   "type": "module",
-  "description": "Ruta Builder: diagnóstico de proyectos, oportunidades Solana y postulaciones con evidencia.",
+  "description": "Ruta Builder: project guidance, Solana opportunities and evidence-aware application drafts.",
   "engines": {
     "node": ">=22.20.0"
   },

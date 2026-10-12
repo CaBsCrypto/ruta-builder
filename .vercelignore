@@ -3,6 +3,7 @@
 .env
 .env.*
 output/
+marketing/
 node_modules/
 dist/
 *.log

@@ -4,7 +4,7 @@
     "verifiedOn": "2026-10-11",
     "timezone": "America/Santiago",
     "freshnessDays": 14,
-    "notes": "Fichas verificadas y selección sujeta al organizador. Una declaración del builder no prueba elegibilidad. El inventario histórico research/opportunities.json se conserva.",
+    "notes": "Historical listings reviewed on October 11, 2026. Organizers confirm eligibility. Builder declarations do not establish eligibility. Original research is preserved.",
     "opportunities": [
       {
         "id": "solana-foundation-standard",
@@ -15,32 +15,32 @@
         "deadline": null,
         "verifiedOn": "2026-10-11",
         "sourceUrl": "https://solana.org/grants-funding",
-        "reward": "Financiación por hitos; importe sujeto a evaluación, sin concesión garantizada.",
-        "description": "Evaluación continua de bienes públicos: contribución de código abierto, oferta gratuita útil o prueba de concepto. Los proyectos principalmente comerciales deben considerar convertible grants.",
+        "reward": "Milestone funding; amount subject to review, with no guaranteed award.",
+        "description": "Ongoing review of public goods: open-source contributions, useful free offerings or proofs of concept. Primarily commercial projects should consider convertible grants.",
         "criteria": [
           {
             "id": "public-good",
-            "label": "Explicar beneficio público para Solana",
+            "label": "Explain the public benefit for Solana",
             "field": "publicBenefit"
           },
           {
             "id": "why-solana",
-            "label": "Justificar por qué Solana aporta al proyecto",
+            "label": "Explain why Solana benefits the project",
             "field": "solanaUse"
           },
           {
             "id": "open-source",
-            "label": "Explicar licencia y acceso comunitario a las partes utilizables",
+            "label": "Explain licensing and community access to reusable components",
             "field": "license"
           },
           {
             "id": "budget",
-            "label": "Presupuesto estructurado y uso de fondos",
+            "label": "Structured budget and use of funds",
             "field": "budgetUsd"
           },
           {
             "id": "milestones",
-            "label": "Hitos medibles relacionados con impacto",
+            "label": "Measurable milestones related to impact",
             "field": "milestones"
           }
         ]
@@ -54,27 +54,27 @@
         "deadline": null,
         "verifiedOn": "2026-10-11",
         "sourceUrl": "https://solana.org/grants-funding",
-        "reward": "Convertible grant por hitos; términos e importe sujetos a evaluación.",
-        "description": "Bien público con componente comercial. No es un premio ni financiación garantizada; confirmar los términos de conversión con Foundation.",
+        "reward": "Milestone-based convertible grant; terms and amount subject to review.",
+        "description": "Public good with a commercial component. This is not a prize or guaranteed funding; confirm conversion terms with the Foundation.",
         "criteria": [
           {
             "id": "public-good",
-            "label": "Explicar el beneficio público y componente comercial",
+            "label": "Explain the public benefit and commercial component",
             "field": "publicBenefit"
           },
           {
             "id": "why-solana",
-            "label": "Justificar el uso de Solana",
+            "label": "Explain the use of Solana",
             "field": "solanaUse"
           },
           {
             "id": "budget",
-            "label": "Presupuesto estructurado y uso de fondos",
+            "label": "Structured budget and use of funds",
             "field": "budgetUsd"
           },
           {
             "id": "milestones",
-            "label": "Hitos medibles",
+            "label": "Measurable milestones",
             "field": "milestones"
           }
         ]
@@ -88,27 +88,27 @@
         "deadline": "2026-11-09T11:59:00Z",
         "verifiedOn": "2026-10-11",
         "sourceUrl": "https://www.encodeclub.com/programmes/solana-hackathon-2026",
-        "reward": "Plazas en aceleradora; no se publica premio en efectivo.",
-        "description": "Construcción del 12 de octubre al 8 de noviembre. Consumer App y Best Use of x402 on Solana; individual o hasta cinco personas. Devnet aceptada; declarar código previo. Inscripción hasta 1 de noviembre. Demo funcional, repositorio, video de 2 a 4 minutos y explicación de Solana.",
+        "reward": "Accelerator places; no cash prize published.",
+        "description": "Build window: October 12 to November 8. Consumer App and Best Use of x402 on Solana; solo or up to five people. Devnet accepted; disclose prior code. Registration until November 1. Functional demo, repository, 2–4 minute video and explanation of Solana.",
         "criteria": [
           {
             "id": "team",
-            "label": "Confirmar equipo individual o máximo cinco integrantes",
+            "label": "Confirm a solo team or up to five members",
             "field": "team"
           },
           {
             "id": "why-solana",
-            "label": "Uso funcional de Solana; x402 debe entregar el recurso tras verificar/liquidar",
+            "label": "Functional use of Solana; x402 delivers the resource after verification/settlement",
             "field": "solanaUse"
           },
           {
             "id": "repo",
-            "label": "Repositorio y README para entrega",
+            "label": "Repository and README for submission",
             "field": "repositoryUrl"
           },
           {
             "id": "milestones",
-            "label": "Plan de demo y trabajo durante la ventana del hackathon",
+            "label": "Demo and development plan during the hackathon window",
             "field": "milestones"
           }
         ]
@@ -122,17 +122,17 @@
         "deadline": "2026-10-13T06:59:00Z",
         "verifiedOn": "2026-10-11",
         "sourceUrl": "https://colosseum.com/worldsfair",
-        "reward": "Premios competitivos; inversión de aceleradora separada y sujeta a selección.",
-        "description": "Edición próxima a cerrar. Requiere integración funcional y cumplir reglas oficiales. No presupuestar premios ni inversión como ingresos.",
+        "reward": "Competitive prizes; accelerator investment is separate and subject to selection.",
+        "description": "This edition is close to its deadline. Requires a working integration and compliance with official rules. Do not budget prizes or investment as revenue.",
         "criteria": [
           {
             "id": "why-solana",
-            "label": "Integración funcional con Solana",
+            "label": "Functional integration with Solana",
             "field": "solanaUse"
           },
           {
             "id": "stage",
-            "label": "Proyecto demostrable antes del cierre",
+            "label": "Demonstrable project before the deadline",
             "field": "stage",
             "allowed": [
               "prototype",
@@ -142,7 +142,7 @@
           },
           {
             "id": "repo",
-            "label": "Repositorio y demo preparados",
+            "label": "Repository and demo ready",
             "field": "repositoryUrl"
           }
         ]
@@ -156,8 +156,8 @@
         "deadline": null,
         "verifiedOn": "2026-10-11",
         "sourceUrl": "https://hack.dev3pack.xyz/faq",
-        "reward": "Tracks y premios pendientes de anuncio.",
-        "description": "27–29 noviembre; orientación universitaria. Elegibilidad personal y plazo exacto no confirmados: no recomendar como abierta.",
+        "reward": "Tracks and prizes not announced yet.",
+        "description": "November 27–29; university focus. Individual eligibility and exact deadline unconfirmed: do not recommend as open.",
         "criteria": []
       },
       {
@@ -169,8 +169,8 @@
         "deadline": null,
         "verifiedOn": "2026-10-11",
         "sourceUrl": "https://bridge.dev3pack.xyz/",
-        "reward": "Programa gratuito, 0% equity; sin premio en efectivo publicado.",
-        "description": "Desde 7 diciembre, ocho semanas. Selección y admisión individual pendientes de confirmar.",
+        "reward": "Free program, 0% equity; no cash prize published.",
+        "description": "Starting December 7, eight weeks. Selection and individual admission to be confirmed.",
         "criteria": []
       },
       {
@@ -182,8 +182,8 @@
         "deadline": null,
         "verifiedOn": "2026-10-11",
         "sourceUrl": "https://superteam.fun/earn/grants/agentic-engineering/",
-        "reward": "200 USDG para herramientas de programación IA, sujeto a aprobación y tramos.",
-        "description": "Applications Paused en la ficha individual verificada; se excluye de recomendaciones.",
+        "reward": "200 USDG for AI coding tools, subject to approval and installments.",
+        "description": "Applications Paused on the individually reviewed listing; excluded from recommendations.",
         "criteria": []
       },
       {
@@ -195,21 +195,21 @@
         "deadline": null,
         "verifiedOn": "2026-10-11",
         "sourceUrl": "https://colosseum.com/eternal",
-        "reward": "Programa sujeto a selección; no asumir financiación.",
-        "description": "Nuevos sprints pausados según investigación verificada; se excluye de recomendaciones.",
+        "reward": "Selective program; do not assume funding.",
+        "description": "New sprints paused according to the reviewed research; excluded from recommendations.",
         "criteria": []
       },
       {
         "id": "superteam-grants-directory",
-        "title": "Superteam · Directorio de grants",
+        "title": "Superteam · Grants directory",
         "ecosystem": "solana",
         "kind": "grant",
         "status": "unverified",
         "deadline": null,
         "verifiedOn": "2026-10-11",
         "sourceUrl": "https://superteam.fun/earn/grants",
-        "reward": "Depende de cada ficha; el directorio no acredita inscripción abierta.",
-        "description": "Requiere verificar una ficha individual y sus requisitos antes de recomendarla.",
+        "reward": "Depends on each listing; the directory does not establish open applications.",
+        "description": "Verify an individual listing and its requirements before recommending it.",
         "criteria": []
       }
     ]
@@ -217,24 +217,24 @@
   "projects": [
     {
       "id": "grantflow",
-      "title": "GrantFlow · rendiciones USDC (fixture)",
+      "title": "GrantFlow · USDC reporting (fixture)",
       "profile": {
         "projectName": "GrantFlow (fixture)",
-        "description": "Ayudar a comunidades a comparar microgrants previstos con transferencias USDC observadas.",
-        "audience": "Responsables de comunidades Solana",
+        "description": "Help communities compare planned microgrants with observed USDC transfers.",
+        "audience": "Solana community organizers",
         "stage": "prototype",
         "currentChain": "solana",
         "targetChain": "solana",
         "websiteUrl": "",
         "repositoryUrl": "",
-        "team": "Dos builders en este ejemplo sintético.",
-        "license": "MIT propuesta por el equipo del ejemplo.",
-        "users": "Sin usuarios reales: ejemplo sintético.",
+        "team": "Two builders in this synthetic example.",
+        "license": "MIT proposed by the example team.",
+        "users": "No real users: synthetic example.",
         "country": "",
         "budgetUsd": "",
-        "milestones": "Importación, revisión de pagos, exportaciones y demo reproducible.",
-        "publicBenefit": "Reconciliador reutilizable y reportes gratuitos para comunidades.",
-        "solanaUse": "Reconciliación de transferencias USDC; cobro x402 en devnet aún sin liquidación real validada."
+        "milestones": "Import, payment review, exports and a reproducible demo.",
+        "publicBenefit": "Reusable reconciler and free community reports.",
+        "solanaUse": "Reconcile USDC transfers; x402 devnet charging without validated real settlement."
       },
       "inspection": {
         "evidence": [
@@ -242,7 +242,7 @@
             "id": "grantflow:observed:0",
             "category": "documentation",
             "provenance": "observed",
-            "claim": "Fixture: README describe rendiciones de microgrants y pagos simulados.",
+            "claim": "Fixture: README describes microgrant reporting and simulated payments.",
             "excerpt": "# GrantFlow\nSynthetic microgrant reporting example.\nDemo payments are simulated.",
             "url": "fixture://projects/grantflow/README.md",
             "file": "README.md",
@@ -254,7 +254,7 @@
             "id": "grantflow:observed:1",
             "category": "dependency",
             "provenance": "observed",
-            "claim": "Fixture: El manifiesto lista @solana/kit y @x402/svm; no prueba integración funcional.",
+            "claim": "Fixture: Manifest lists @solana/kit and @x402/svm; this does not prove a functional integration.",
             "excerpt": "{\"dependencies\":{\"@solana/kit\":\"5.5.1\",\"@x402/svm\":\"2.28.0\"}}",
             "url": "fixture://projects/grantflow/package.json",
             "file": "package.json",
@@ -288,11 +288,11 @@
     },
     {
       "id": "wallet-alerts",
-      "title": "Wallet Alerts · idea de notificaciones (fixture)",
+      "title": "Wallet Alerts · notification idea (fixture)",
       "profile": {
         "projectName": "Wallet Alerts (fixture)",
-        "description": "Avisar a una comunidad de cambios relevantes en una tesorería.",
-        "audience": "Administradores de tesorerías",
+        "description": "Notify a community about relevant changes in a treasury.",
+        "audience": "Treasury administrators",
         "stage": "idea",
         "currentChain": "ethereum",
         "targetChain": "solana",
@@ -300,11 +300,11 @@
         "repositoryUrl": "",
         "team": "",
         "license": "",
-        "users": "Sin usuarios reales: ejemplo sintético.",
+        "users": "No real users: synthetic example.",
         "country": "",
         "budgetUsd": "",
         "milestones": "",
-        "publicBenefit": "Alertas básicas gratuitas y documentación pública.",
+        "publicBenefit": "Free basic alerts and public documentation.",
         "solanaUse": ""
       },
       "inspection": {
@@ -313,7 +313,7 @@
             "id": "wallet-alerts:observed:0",
             "category": "documentation",
             "provenance": "observed",
-            "claim": "Fixture: README presenta una idea y declara que aún no hay implementación Solana.",
+            "claim": "Fixture: README presents an idea and declares no Solana implementation yet.",
             "excerpt": "# Wallet Alerts\nAn idea for treasury notifications. No Solana implementation yet.",
             "url": "fixture://projects/wallet-alerts/README.md",
             "file": "README.md",
@@ -325,7 +325,7 @@
             "id": "wallet-alerts:observed:1",
             "category": "dependency",
             "provenance": "observed",
-            "claim": "Fixture: El manifiesto lista viem; no acredita actividad ni costes de consumo.",
+            "claim": "Fixture: Manifest lists viem; this does not establish activity or actual usage costs.",
             "excerpt": "{\"dependencies\":{\"viem\":\"2.0.0\"}}",
             "url": "fixture://projects/wallet-alerts/package.json",
             "file": "package.json",
@@ -359,24 +359,24 @@
     },
     {
       "id": "public-sdk",
-      "title": "Public SDK · herramienta abierta (fixture)",
+      "title": "Public SDK · open tool (fixture)",
       "profile": {
         "projectName": "Public SDK (fixture)",
-        "description": "Facilitar a builders consultas de transferencias con evidencia trazable.",
-        "audience": "Desarrolladores de herramientas comunitarias",
+        "description": "Help builders query transfers with traceable evidence.",
+        "audience": "Developers of community tools",
         "stage": "prototype",
         "currentChain": "solana",
         "targetChain": "solana",
         "websiteUrl": "",
         "repositoryUrl": "",
-        "team": "Builder individual de ejemplo.",
-        "license": "Apache-2.0 declarada para este ejemplo.",
-        "users": "Sin usuarios reales: ejemplo sintético.",
+        "team": "Example solo builder.",
+        "license": "Apache-2.0 declared for this example.",
+        "users": "No real users: synthetic example.",
         "country": "",
         "budgetUsd": "",
-        "milestones": "Documentar cobertura, probar datos incompletos y preparar ejemplos.",
-        "publicBenefit": "SDK abierto y ejemplos públicos reutilizables.",
-        "solanaUse": "Consultas RPC de Solana para interpretar instrucciones SPL Token."
+        "milestones": "Document coverage, test incomplete data and prepare examples.",
+        "publicBenefit": "Open SDK and reusable public examples.",
+        "solanaUse": "Solana RPC queries to interpret SPL Token instructions."
       },
       "inspection": {
         "evidence": [
@@ -384,7 +384,7 @@
             "id": "public-sdk:observed:0",
             "category": "documentation",
             "provenance": "observed",
-            "claim": "Fixture: README describe un SDK para inspección RPC de transferencias.",
+            "claim": "Fixture: README describes an SDK for RPC transfer inspection.",
             "excerpt": "# Public SDK\nSynthetic public SDK for RPC transfer inspection.",
             "url": "fixture://projects/public-sdk/README.md",
             "file": "README.md",
@@ -396,7 +396,7 @@
             "id": "public-sdk:observed:1",
             "category": "code_reference",
             "provenance": "observed",
-            "claim": "Fixture: El archivo referencia getTransaction; no demuestra solicitudes ni consumo real.",
+            "claim": "Fixture: File references getTransaction; this does not prove requests or actual usage.",
             "excerpt": "const method = \"getTransaction\";\nexport { method };",
             "url": "fixture://projects/public-sdk/src/client.ts",
             "file": "src/client.ts",

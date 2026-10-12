@@ -63,8 +63,8 @@ test('private free preview, immutable paid fixture, replay and restart recovery'
     assert.equal((await b.request(`/reports/${reportId}`)).status, 200);
     const md = await b.request(`/reports/${reportId}?format=markdown`);
     const markdown = await md.text();
-    assert.match(markdown, /# Plan y postulación/);
-    assert.match(markdown, /^## Diagnóstico$/m);
+    assert.match(markdown, /# Plan and application/);
+    assert.match(markdown, /^## Diagnostic$/m);
     const cookie = b.cookie; await server.close();
     server = await startCoachServer({ mode: 'local-fixture', dbPath, facilitator });
     const resumed = browser(server.url, cookie);

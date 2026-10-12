@@ -99,7 +99,7 @@ test('a declared country is checked explicitly and is never inferred from timezo
   profile.country = 'Chile';
   const candidate = evaluateOpportunities(profile, declaredEvidence(profile, now), { now, catalog: [restricted] })[0];
   assert.equal(candidate.status, 'possible');
-  assert.match(candidate.criteria[0].reason, /no acredita elegibilidad/);
+  assert.match(candidate.criteria[0].reason, /does not establish eligibility/);
 });
 
 test('unsupported ecosystems return no recommendations and questions reflect missing answers', () => {
@@ -177,6 +177,23 @@ test('invalid output is repaired at most three times and reserves each persisten
   assert.equal(reserved, 3); assert.equal(sent, 3);
 });
 
+test('English generation requests English structured headings and preserves evidence verbatim', async () => {
+  const input = fixtureInput();
+  let calls = 0;
+  const result = await prepareCoachContent(input, {mode:'live', locale:'en', apiKey:'test-only', transport:transport(body=>{
+    calls++;
+    assert.match(body.instructions as string, /UNTRUSTED CONTENT/);
+    const schema = (body.text as {format:{schema:{properties:{application:{items:{properties:{heading:{enum:string[]}}}}}}}}).format.schema;
+    assert.deepEqual(schema.properties.application.items.properties.heading.enum,['Problem','Solution','Public benefit','Solana use','Deliverables','Budget','Milestones','Team']);
+    // Even a valid legacy Spanish response cannot become a new English report.
+    return response(fixtureCoachContent(input,calls===1?'es':'en'));
+  })});
+  assert.equal(calls,2);
+  assert.ok(validateCoachContent(result.content,input.evidence));
+  assert.equal(result.content.application[0].heading,'Problem');
+  assert.equal(result.content.summary.text,input.evidence.find(e=>e.id==='declared:description')!.claim);
+});
+
 test('persistent attempt rejection stops before the external request', async () => {
   let sent = 0;
   await assert.rejects(prepareCoachContent(fixtureInput(), { mode: 'live', apiKey: 'test-only', onCall: () => { throw new Error('AI_CALL_BUDGET_EXHAUSTED'); }, transport: transport(() => { sent++; return response({}); }) }), /BUDGET_EXHAUSTED/);
@@ -215,7 +232,7 @@ test('a declared functional Solana integration always requires human review, inc
   const match = evaluateOpportunities(input.profile,input.evidence,{now,catalog:[encode]})[0];
   assert.equal(match.status,'pending');
   assert.equal(match.criteria.find(item=>item.id==='why-solana')?.status,'missing');
-  assert.match(match.criteria.find(item=>item.id==='why-solana')?.reason ?? '',/Revisión humana pendiente/);
+  assert.match(match.criteria.find(item=>item.id==='why-solana')?.reason ?? '',/Human review pending/);
   assert.match(match.criteria.find(item=>item.id==='why-solana')?.reason ?? '',/SDK/);
 });
 
@@ -223,7 +240,7 @@ test('a declared public offering with MIT license prioritizes standard grant rev
   const input = fixtureInput();
   assert.equal(input.matches[0].opportunity.id,'solana-foundation-standard');
   assert.ok(input.matches[0].criteria.some(item=>item.status==='missing'));
-  assert.ok(input.matches[0].criteria.filter(item=>item.status==='matched').every(item=>item.reason.includes('no acredita elegibilidad')));
+  assert.ok(input.matches[0].criteria.filter(item=>item.status==='matched').every(item=>item.reason.includes('does not establish eligibility')));
 });
 
 test('large source evidence is sampled within 100KiB, keeps every declaration and reports AI coverage', async () => {

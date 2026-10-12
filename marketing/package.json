@@ -1,0 +1,35 @@
+{
+  "name": "ruta-builder-marketing",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "studio": "remotion studio remotion/index.ts",
+    "typecheck": "tsc --noEmit",
+    "render:english": "node scripts/render-remotion.mjs RutaEnglish45",
+    "render:english:hyperframes": "node scripts/build-english-hyperframes.mjs && powershell -NoProfile -File scripts/render-hyperframes.ps1 -English45",
+    "assets": "node scripts/assets.mjs && node scripts/build-hyperframes.mjs",
+    "render:promo": "node scripts/render-remotion.mjs RutaPromo",
+    "render:vertical": "node scripts/render-remotion.mjs RutaVertical",
+    "render:explainer": "powershell -NoProfile -File scripts/render-hyperframes.ps1",
+    "hyperframes:preview": "hyperframes preview hyperframes"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.534",
+    "@remotion/cli": "4.0.534",
+    "@remotion/renderer": "4.0.534",
+    "ffmpeg-static": "5.3.0",
+    "gsap": "3.14.2",
+    "hyperframes": "0.8.149",
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "remotion": "4.0.534"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "typescript": "5.9.3"
+  }
+}

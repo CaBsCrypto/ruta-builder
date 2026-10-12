@@ -17,29 +17,29 @@ function inspection(id: string, files: { file: string; text: string; category: '
 /** Synthetic, repository-shaped examples. No actual website, repository or integration was verified. */
 export const coachProjects: CoachProjectFixture[] = [
   {
-    id: 'grantflow', title: 'GrantFlow · rendiciones USDC (fixture)',
-    profile: { ...emptyProfile(), projectName: 'GrantFlow (fixture)', description: 'Ayudar a comunidades a comparar microgrants previstos con transferencias USDC observadas.', audience: 'Responsables de comunidades Solana', stage: 'prototype', currentChain: 'solana',
-      team: 'Dos builders en este ejemplo sintético.', license: 'MIT propuesta por el equipo del ejemplo.', users: 'Sin usuarios reales: ejemplo sintético.', publicBenefit: 'Reconciliador reutilizable y reportes gratuitos para comunidades.',
-      solanaUse: 'Reconciliación de transferencias USDC; cobro x402 en devnet aún sin liquidación real validada.', milestones: 'Importación, revisión de pagos, exportaciones y demo reproducible.' },
+    id: 'grantflow', title: 'GrantFlow · USDC reporting (fixture)',
+    profile: { ...emptyProfile(), projectName: 'GrantFlow (fixture)', description: 'Help communities compare planned microgrants with observed USDC transfers.', audience: 'Solana community organizers', stage: 'prototype', currentChain: 'solana',
+      team: 'Two builders in this synthetic example.', license: 'MIT proposed by the example team.', users: 'No real users: synthetic example.', publicBenefit: 'Reusable reconciler and free community reports.',
+      solanaUse: 'Reconcile USDC transfers; x402 devnet charging without validated real settlement.', milestones: 'Import, payment review, exports and a reproducible demo.' },
     inspection: inspection('grantflow', [
-      { file: 'README.md', text: '# GrantFlow\nSynthetic microgrant reporting example.\nDemo payments are simulated.', category: 'documentation', claim: 'README describe rendiciones de microgrants y pagos simulados.' },
-      { file: 'package.json', text: '{"dependencies":{"@solana/kit":"5.5.1","@x402/svm":"2.28.0"}}', category: 'dependency', claim: 'El manifiesto lista @solana/kit y @x402/svm; no prueba integración funcional.' },
+      { file: 'README.md', text: '# GrantFlow\nSynthetic microgrant reporting example.\nDemo payments are simulated.', category: 'documentation', claim: 'README describes microgrant reporting and simulated payments.' },
+      { file: 'package.json', text: '{"dependencies":{"@solana/kit":"5.5.1","@x402/svm":"2.28.0"}}', category: 'dependency', claim: 'Manifest lists @solana/kit and @x402/svm; this does not prove a functional integration.' },
     ]),
   },
   {
-    id: 'wallet-alerts', title: 'Wallet Alerts · idea de notificaciones (fixture)',
-    profile: { ...emptyProfile(), projectName: 'Wallet Alerts (fixture)', description: 'Avisar a una comunidad de cambios relevantes en una tesorería.', audience: 'Administradores de tesorerías', stage: 'idea', currentChain: 'ethereum', users: 'Sin usuarios reales: ejemplo sintético.', publicBenefit: 'Alertas básicas gratuitas y documentación pública.' },
+    id: 'wallet-alerts', title: 'Wallet Alerts · notification idea (fixture)',
+    profile: { ...emptyProfile(), projectName: 'Wallet Alerts (fixture)', description: 'Notify a community about relevant changes in a treasury.', audience: 'Treasury administrators', stage: 'idea', currentChain: 'ethereum', users: 'No real users: synthetic example.', publicBenefit: 'Free basic alerts and public documentation.' },
     inspection: inspection('wallet-alerts', [
-      { file: 'README.md', text: '# Wallet Alerts\nAn idea for treasury notifications. No Solana implementation yet.', category: 'documentation', claim: 'README presenta una idea y declara que aún no hay implementación Solana.' },
-      { file: 'package.json', text: '{"dependencies":{"viem":"2.0.0"}}', category: 'dependency', claim: 'El manifiesto lista viem; no acredita actividad ni costes de consumo.' },
+      { file: 'README.md', text: '# Wallet Alerts\nAn idea for treasury notifications. No Solana implementation yet.', category: 'documentation', claim: 'README presents an idea and declares no Solana implementation yet.' },
+      { file: 'package.json', text: '{"dependencies":{"viem":"2.0.0"}}', category: 'dependency', claim: 'Manifest lists viem; this does not establish activity or actual usage costs.' },
     ]),
   },
   {
-    id: 'public-sdk', title: 'Public SDK · herramienta abierta (fixture)',
-    profile: { ...emptyProfile(), projectName: 'Public SDK (fixture)', description: 'Facilitar a builders consultas de transferencias con evidencia trazable.', audience: 'Desarrolladores de herramientas comunitarias', stage: 'prototype', currentChain: 'solana', team: 'Builder individual de ejemplo.', license: 'Apache-2.0 declarada para este ejemplo.', users: 'Sin usuarios reales: ejemplo sintético.', publicBenefit: 'SDK abierto y ejemplos públicos reutilizables.', solanaUse: 'Consultas RPC de Solana para interpretar instrucciones SPL Token.', milestones: 'Documentar cobertura, probar datos incompletos y preparar ejemplos.' },
+    id: 'public-sdk', title: 'Public SDK · open tool (fixture)',
+    profile: { ...emptyProfile(), projectName: 'Public SDK (fixture)', description: 'Help builders query transfers with traceable evidence.', audience: 'Developers of community tools', stage: 'prototype', currentChain: 'solana', team: 'Example solo builder.', license: 'Apache-2.0 declared for this example.', users: 'No real users: synthetic example.', publicBenefit: 'Open SDK and reusable public examples.', solanaUse: 'Solana RPC queries to interpret SPL Token instructions.', milestones: 'Document coverage, test incomplete data and prepare examples.' },
     inspection: inspection('public-sdk', [
-      { file: 'README.md', text: '# Public SDK\nSynthetic public SDK for RPC transfer inspection.', category: 'documentation', claim: 'README describe un SDK para inspección RPC de transferencias.' },
-      { file: 'src/client.ts', text: 'const method = "getTransaction";\nexport { method };', category: 'code_reference', claim: 'El archivo referencia getTransaction; no demuestra solicitudes ni consumo real.' },
+      { file: 'README.md', text: '# Public SDK\nSynthetic public SDK for RPC transfer inspection.', category: 'documentation', claim: 'README describes an SDK for RPC transfer inspection.' },
+      { file: 'src/client.ts', text: 'const method = "getTransaction";\nexport { method };', category: 'code_reference', claim: 'File references getTransaction; this does not prove requests or actual usage.' },
     ]),
   },
 ];
