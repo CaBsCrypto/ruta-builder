@@ -1,0 +1,1013 @@
+{
+  "schemaVersion": 1,
+  "verifiedOn": "2026-10-11",
+  "timezone": "America/Santiago",
+  "focus": {
+    "ecosystem": "Solana",
+    "language": "TypeScript",
+    "candidates": [
+      "agent_purchase_controls",
+      "paid_usdc_reports"
+    ]
+  },
+  "interpretation": {
+    "listed": "Presencia verificada en el directorio o ficha; no implica elegibilidad del equipo ni inscripción abierta.",
+    "verificationScope": "listing indica lectura de ficha; directory indica inventario y recompensa publicados, con requisitos detallados pendientes.",
+    "money": "Las bolsas publicadas no son ingresos garantizados. Créditos, servicios, hardware e inversión se distinguen de stablecoins.",
+    "residence": "La zona horaria del usuario no prueba residencia, ciudadanía ni estatus universitario."
+  },
+  "ecosystemTracks": [
+    {
+      "id": "solana",
+      "name": "Solana",
+      "status": "open_until_deadline",
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://colosseum.com/legal/Crypto%20World%27s%20Fair%20Hackathon%20Rules.pdf",
+      "reward": {
+        "kind": "monetary_prize",
+        "publishedPool": 100000,
+        "unit": "USD",
+        "recipients": 10,
+        "perRecipient": 10000
+      },
+      "requirement": "Integración funcional con el ecosistema indicado; reglas oficiales generales."
+    },
+    {
+      "id": "tempo",
+      "name": "Tempo",
+      "status": "open_until_deadline",
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://colosseum.com/legal/Crypto%20World%27s%20Fair%20Hackathon%20Rules.pdf",
+      "reward": {
+        "kind": "monetary_prize",
+        "publishedPool": 100000,
+        "unit": "USD",
+        "recipients": 10,
+        "perRecipient": 10000
+      },
+      "requirement": "Integración funcional con el ecosistema indicado; reglas oficiales generales."
+    },
+    {
+      "id": "hyperliquid",
+      "name": "Hyperliquid",
+      "status": "open_until_deadline",
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://colosseum.com/legal/Crypto%20World%27s%20Fair%20Hackathon%20Rules.pdf",
+      "reward": {
+        "kind": "monetary_prize",
+        "publishedPool": 100000,
+        "unit": "USD",
+        "recipients": 10,
+        "perRecipient": 10000
+      },
+      "requirement": "Integración funcional con el ecosistema indicado; reglas oficiales generales."
+    },
+    {
+      "id": "zcash",
+      "name": "Zcash",
+      "status": "open_until_deadline",
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://colosseum.com/legal/Crypto%20World%27s%20Fair%20Hackathon%20Rules.pdf",
+      "reward": {
+        "kind": "monetary_prize",
+        "publishedPool": 100000,
+        "unit": "USD",
+        "recipients": 10,
+        "perRecipient": 10000
+      },
+      "requirement": "Integración funcional con el ecosistema indicado; reglas oficiales generales."
+    },
+    {
+      "id": "ethereum-l1",
+      "name": "Ethereum L1",
+      "status": "open_until_deadline",
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://colosseum.com/legal/Crypto%20World%27s%20Fair%20Hackathon%20Rules.pdf",
+      "reward": {
+        "kind": "monetary_prize",
+        "publishedPool": 25000,
+        "unit": "USD",
+        "recipients": 5,
+        "perRecipient": 5000
+      },
+      "requirement": "Integración funcional con el ecosistema indicado; reglas oficiales generales."
+    },
+    {
+      "id": "base",
+      "name": "Base",
+      "status": "open_until_deadline",
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://colosseum.com/legal/Crypto%20World%27s%20Fair%20Hackathon%20Rules.pdf",
+      "reward": {
+        "kind": "monetary_prize",
+        "publishedPool": 25000,
+        "unit": "USD",
+        "recipients": 5,
+        "perRecipient": 5000
+      },
+      "requirement": "Integración funcional con el ecosistema indicado; reglas oficiales generales."
+    },
+    {
+      "id": "arbitrum",
+      "name": "Arbitrum",
+      "status": "open_until_deadline",
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://colosseum.com/legal/Crypto%20World%27s%20Fair%20Hackathon%20Rules.pdf",
+      "reward": {
+        "kind": "monetary_prize",
+        "publishedPool": 25000,
+        "unit": "USD",
+        "recipients": 5,
+        "perRecipient": 5000
+      },
+      "requirement": "Integración funcional con el ecosistema indicado; reglas oficiales generales."
+    },
+    {
+      "id": "robinhood-chain",
+      "name": "Robinhood Chain",
+      "status": "open_until_deadline",
+      "verifiedOn": "2026-10-11",
+      "sourceUrl": "https://colosseum.com/legal/Crypto%20World%27s%20Fair%20Hackathon%20Rules.pdf",
+      "reward": {
+        "kind": "monetary_prize",
+        "publishedPool": 25000,
+        "unit": "USD",
+        "recipients": 5,
+        "perRecipient": 5000
+      },
+      "requirement": "Integración funcional con el ecosistema indicado; reglas oficiales generales."
+    }
+  ],
+  "sideTracks": [
+    {
+      "id": "meteora-dbc",
+      "name": "Meteora DBC",
+      "sourceUrl": "https://superteam.fun/earn/listing/meteora-dbc",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 20000,
+        "unit": "USDC"
+      },
+      "requirement": "Integración DBC/DAMM v2; doble entrega y condiciones de la ficha.",
+      "group": "global_integration_or_services",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "countryRequirement": {
+        "status": "global_listing",
+        "countryOrRegion": null,
+        "requirement": "La etiqueta global no sustituye las reglas de elegibilidad del organizador."
+      }
+    },
+    {
+      "id": "panta-api",
+      "name": "Panta API",
+      "sourceUrl": "https://superteam.fun/earn/listing/panta-api-side-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "requirement": "Usar Panta API en mercados de predicción; entrega Colosseum y Earn.",
+      "group": "global_integration_or_services",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "countryRequirement": {
+        "status": "global_listing",
+        "countryOrRegion": null,
+        "requirement": "La etiqueta global no sustituye las reglas de elegibilidad del organizador."
+      }
+    },
+    {
+      "id": "solami",
+      "name": "Solami",
+      "sourceUrl": "https://superteam.fun/earn/listing/build-something-live-on-solana-data",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 3000,
+        "unit": "USDG",
+        "distribution": [1200, 1000, 500, 300]
+      },
+      "requirement": "Integración significativa con API Solami, aplicación live mainnet, repositorio público y README, demo de 2 a 3 minutos.",
+      "verificationScope": "listing_in_app_browser",
+      "winnersOn": "2026-10-28",
+      "group": "global_integration_or_services",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "countryRequirement": {
+        "status": "global_listing",
+        "countryOrRegion": null,
+        "requirement": "La etiqueta global no sustituye las reglas de elegibilidad del organizador."
+      }
+    },
+    {
+      "id": "rpc-fast",
+      "name": "RPC Fast",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-rpc-fast-infrastructure-sidetrack",
+      "reward": {
+        "kind": "service_credits",
+        "publishedPool": 10474,
+        "unit": "USD_equivalent",
+        "recipients": 21
+      },
+      "requirement": "Usar RPC Fast durante y después, doble entrega y participación pública requerida.",
+      "note": "Solo mainnet, Frankfurt. Premios: un mes Aperture 499 USD o dos meses Stream 498 USD por equipo; sin pago monetario.",
+      "group": "global_integration_or_services",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "countryRequirement": {
+        "status": "global_listing",
+        "countryOrRegion": null,
+        "requirement": "La etiqueta global no sustituye las reglas de elegibilidad del organizador."
+      }
+    },
+    {
+      "id": "certik",
+      "name": "CertiK",
+      "sourceUrl": "https://superteam.fun/earn/listing/submit-project-for-certik-security-audit-credits",
+      "reward": {
+        "kind": "audit_credits",
+        "publishedPool": 100000,
+        "unit": "USD_equivalent",
+        "recipients": 10
+      },
+      "requirement": "Entrega Colosseum, repositorio accesible, programas a auditar, roadmap, mainnet y financiación futura.",
+      "note": "Créditos sin efectivo, no transferibles y canjeables en seis meses.",
+      "group": "global_integration_or_services",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "countryRequirement": {
+        "status": "global_listing",
+        "countryOrRegion": null,
+        "requirement": "La etiqueta global no sustituye las reglas de elegibilidad del organizador."
+      }
+    },
+    {
+      "id": "adevar",
+      "name": "Adevar Labs",
+      "sourceUrl": "https://superteam.fun/earn/listing/pre-audit-credits-adevarlabs",
+      "reward": {
+        "kind": "audit_services",
+        "publishedPool": 20000,
+        "unit": "USD_equivalent",
+        "recipients": 5
+      },
+      "requirement": "Entrega Colosseum Solana/Rust, formulario y publicación requerida por la ficha.",
+      "note": "Cinco preauditorías valoradas en 4000 USD; servicios sin alternativa monetaria.",
+      "group": "global_integration_or_services",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "countryRequirement": {
+        "status": "global_listing",
+        "countryOrRegion": null,
+        "requirement": "La etiqueta global no sustituye las reglas de elegibilidad del organizador."
+      }
+    },
+    {
+      "id": "akcavpn",
+      "name": "AkcaVPN",
+      "sourceUrl": "https://superteam.fun/earn/listing/crypto-worlds-fair-project-for-akcavpn-credits",
+      "reward": {
+        "kind": "service_credits",
+        "publishedPool": 3500,
+        "unit": "USD_equivalent",
+        "recipients": 10
+      },
+      "requirement": "Entrega Crypto World's Fair y requisitos de ficha.",
+      "note": "Créditos VPN; sin efectivo ni transferencia; canjeables en seis meses.",
+      "verificationScope": "listing_in_app_browser",
+      "group": "global_integration_or_services",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "countryRequirement": {
+        "status": "global_listing",
+        "countryOrRegion": null,
+        "requirement": "La etiqueta global no sustituye las reglas de elegibilidad del organizador."
+      }
+    },
+    {
+      "id": "argentina",
+      "name": "Argentina",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-argentina-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 10000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Argentina",
+        "requirement": "Fundador solo residente o al menos un cofundador residente; integración Solana y doble entrega."
+      },
+      "note": "Cabecera USDG; cuerpo USDC. Confirmar moneda de pago."
+    },
+    {
+      "id": "brasil",
+      "name": "Brasil y SolarEcoFund",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/side-track-superteam-brasil",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Brasil",
+        "requirement": "Ubicación Brasil en Colosseum; integrar Solana y entregar en ambas plataformas."
+      },
+      "note": "Bonus adicional de 1000 USDC para pagos, stablecoins o RWA; una sola candidatura."
+    },
+    {
+      "id": "canada",
+      "name": "Canadá",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/worlds-fair-canada",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Canadá",
+        "requirement": "Canadá como ubicación principal del equipo en Colosseum; entrega elegible."
+      },
+      "note": "Cabecera USDG; cuerpo USDC. Confirmar moneda de pago."
+    },
+    {
+      "id": "australia",
+      "name": "Australia",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-australia-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 10000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Australia",
+        "requirement": "Al menos un fundador o miembro central basado en Australia; track Solana; doble entrega."
+      }
+    },
+    {
+      "id": "solanacze",
+      "name": "SolanaCZE",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-solanacze-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 10000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Chequia o Eslovaquia",
+        "requirement": "Miembro central basado en Chequia/Eslovaquia o participante activo de Zero to Hero 2.0; integración Solana; doble entrega."
+      }
+    },
+    {
+      "id": "vietnam",
+      "name": "Vietnam",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-vietnam-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 10000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Vietnam",
+        "requirement": "Vietnam como país base; inscribirse al programa y presentar en Demo Day del 4 de octubre, online aceptado."
+      },
+      "note": "Cabecera USDG; cuerpo USDC. Demo Day requerido ya ocurrió."
+    },
+    {
+      "id": "turkiye",
+      "name": "Türkiye",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/submit-crypto-worlds-fair-project-for-turkish-builders",
+      "intakeFormUrl": "https://forms.gle/Lb585suVhkwm3Uxk7",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 9000,
+        "unit": "USDG",
+        "distribution": [4000, 3000, 2000]
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Türkiye",
+        "requirement": "Equipo basado en Türkiye; Turkey como país principal en Colosseum; formulario de ingreso, grupo Telegram y doble entrega Colosseum/Earn."
+      },
+      "requirement": "Integración Solana; pitch y demo de hasta tres minutos cada uno; GitHub público o acceso a jueces; materiales en inglés.",
+      "note": "Cabecera vigente: 9000 USDG, distribuida 4000/3000/2000. El cuerpo todavía publica 5000/3000/2000, total 10000. Importe final por aclarar; no garantizar 10000."
+    },
+    {
+      "id": "ukraine",
+      "name": "Ucrania",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-ukraine-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 10000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Ucrania",
+        "requirement": "Ucrania como país en Colosseum; doble entrega; asistir al Demo Day online o presencial."
+      }
+    },
+    {
+      "id": "thailand",
+      "name": "Tailandia IA y Solana",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/ai-solana-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 10000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Tailandia",
+        "requirement": "Tailandia como país; producto con integración Solana e IA significativa; doble entrega."
+      }
+    },
+    {
+      "id": "georgia",
+      "name": "Georgia",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-georgia-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 10000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Georgia",
+        "requirement": "Equipo basado en Georgia; Georgia como país en Colosseum; doble entrega Colosseum/Earn, reglas globales y asistencia obligatoria al Demo Day presencial."
+      }
+    },
+    {
+      "id": "spain",
+      "name": "España La Familia",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-la-familia-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "España",
+        "requirement": "España como país en Colosseum; doble entrega y reglas generales."
+      }
+    },
+    {
+      "id": "balkan",
+      "name": "Balkan",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-balkan-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Balcanes",
+        "requirement": "Equipo de los Balcanes; seleccionar país; Solana y doble entrega. La ficha define la región."
+      }
+    },
+    {
+      "id": "uk",
+      "name": "Reino Unido Build for Breakpoint",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/submit-solana-project-to-build-for-breakpoint-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Reino Unido",
+        "requirement": "Reino Unido como país; obtener Key en Win Board antes del cierre; Demo Day online; doble entrega."
+      },
+      "note": "Primer puesto añade asiento en Demo Dinner."
+    },
+    {
+      "id": "japan",
+      "name": "Japón y enXross",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/superteam-japan-x-enxross-by-tokyo-dome-side-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Japón",
+        "requirement": "Dirigido a builders Solana basados en Japón; entretenimiento puede recibir valoración adicional."
+      }
+    },
+    {
+      "id": "singapore",
+      "name": "Singapur",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-singapore-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Singapur",
+        "requirement": "Equipo basado en Singapur; Singapore como país en Colosseum; doble entrega Colosseum/Earn y reglas globales."
+      }
+    },
+    {
+      "id": "ireland",
+      "name": "Irlanda",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-ie-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Irlanda",
+        "requirement": "Irlanda como país en Colosseum; doble entrega y reglas generales."
+      }
+    },
+    {
+      "id": "germany",
+      "name": "Alemania",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-germany-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Alemania",
+        "requirement": "Alemania como país; Solana; doble entrega y reglas generales."
+      }
+    },
+    {
+      "id": "poland",
+      "name": "Polonia",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-poland-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Polonia",
+        "requirement": "Polonia como país en ambas plataformas; presentación presencial en Varsovia el 12 de octubre."
+      }
+    },
+    {
+      "id": "india",
+      "name": "India",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-india-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "India",
+        "requirement": "Equipo basado en India; India como país; Solana y doble entrega."
+      }
+    },
+    {
+      "id": "nigeria",
+      "name": "Nigeria",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-nigeria-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Nigeria",
+        "requirement": "Nigeria como país; track Solana y producto evaluable."
+      }
+    },
+    {
+      "id": "netherlands",
+      "name": "Países Bajos",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-nl-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Países Bajos",
+        "requirement": "Países Bajos como país; Solana; presentar en el Demo Day para ganar."
+      }
+    },
+    {
+      "id": "uae",
+      "name": "Emiratos Árabes Unidos",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/superteamuae-sidetrack-colosseum",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Emiratos Árabes Unidos",
+        "requirement": "UAE como país y miembros locales identificados; Solana y doble entrega."
+      }
+    },
+    {
+      "id": "nepal",
+      "name": "Nepal",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-nepal-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Nepal",
+        "requirement": "Equipo de Nepal; Nepal como país; Solana y doble entrega."
+      }
+    },
+    {
+      "id": "pakistan",
+      "name": "Pakistán",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/crypto-worlds-fair-pakistan-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDC"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Pakistán",
+        "requirement": "Al menos un miembro central basado en Pakistán; integración Solana y doble entrega."
+      }
+    },
+    {
+      "id": "kazakhstan",
+      "name": "Kazajistán",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/colosseum-crypto-worlds-fair-hackathon-superteam-kazakhstan-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Kazajistán",
+        "requirement": "Ficha regional de Kazajistán; revisión inicial Colosseum aprobada y videos separados de producto y pitch."
+      },
+      "note": "Inscripción al programa cerraba el 8 de octubre; cabecera USDG y cuerpo USDC."
+    },
+    {
+      "id": "kazakhstan-idos",
+      "name": "Kazajistán iDos Games",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/superteam-kazakhstan-x-idos-games-side-track",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Kazajistán",
+        "requirement": "Ficha regional de Kazajistán; juego funcional creado con iDos Games e integración Solana."
+      }
+    },
+    {
+      "id": "kazakhstan-kase",
+      "name": "Kazajistán KASE",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/superteam-kazakhstan-x-kase-side-track-corporate-actions-on-blockchain",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 2000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Kazajistán",
+        "requirement": "Ficha regional de Kazajistán; cupón, redención y otra acción corporativa funcional en Solana."
+      }
+    },
+    {
+      "id": "malaysia-superscrypt",
+      "name": "Malasia Superscrypt",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/superteam-my-x-superscrypt-build-global-buatan-malaysia",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 5000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Malasia",
+        "requirement": "Al menos un miembro basado en Malasia; país Malasia; Solana; registro local y pitch presencial."
+      },
+      "note": "Título 7000 incluye los 2000 del track Solami separado. Cierre local publicado: 10 de octubre, 12 noon; zona no explicitada."
+    },
+    {
+      "id": "malaysia-solami",
+      "name": "Malasia Solami",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/superteam-my-x-solami-build-global-buatan-malaysia",
+      "reward": {
+        "kind": "stablecoin",
+        "publishedPool": 2000,
+        "unit": "USDG"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Malasia",
+        "requirement": "Ficha regional de Malasia; aplicación en mainnet usando Solami como parte central; demo y repositorio accesible."
+      }
+    },
+    {
+      "id": "germany-peaq",
+      "name": "Alemania peaq",
+      "group": "regional_or_community",
+      "status": "listed",
+      "verifiedOn": "2026-10-11",
+      "verificationScope": "listing",
+      "sourceUrl": "https://superteam.fun/earn/listing/build-solutions-advancing-the-machine-economy-with-peaq",
+      "reward": {
+        "kind": "mixed",
+        "publishedPool": 3995,
+        "unit": "USD_equivalent"
+      },
+      "countryRequirement": {
+        "status": "source_confirmed",
+        "countryOrRegion": "Alemania",
+        "requirement": "Ficha regional de Alemania; solución para la economía de máquinas con peaq, admite integración simulada."
+      },
+      "note": "Premio mixto: 2000 USDT más cinco Microducks valorados en 399 USD cada uno; la cabecera agrupa 3995 como USDT."
+    }
+  ],
+  "programs": [
+    {
+      "id": "colosseum-cwf",
+      "name": "Colosseum Crypto World's Fair",
+      "status": "open_until_deadline",
+      "sourceUrl": "https://colosseum.com/worldsfair",
+      "rulesUrl": "https://colosseum.com/legal/Crypto%20World%27s%20Fair%20Hackathon%20Rules.pdf",
+      "deadline": {
+        "source": "2026-10-12 23:59 America/Los_Angeles",
+        "utc": "2026-10-13T06:59:00Z",
+        "santiago": "2026-10-13T03:59:00-03:00"
+      },
+      "reward": {
+        "kind": "prizes_and_separate_seed_investment",
+        "general": {
+          "grand": 30000,
+          "otherTopProjects": 20,
+          "perOtherProject": 15000,
+          "publicGood": 5000,
+          "university": 5000,
+          "unit": "USD"
+        },
+        "acceleratorAcceptedTeamInvestment": 250000
+      },
+      "note": "General prizes specified in CASH stablecoin in official rules; investment is separately selected and is not a guaranteed prize.",
+      "verifiedOn": "2026-10-11"
+    },
+    {
+      "id": "encode-solana-2026",
+      "name": "Encode Solana Hackathon 2026",
+      "status": "upcoming",
+      "sourceUrl": "https://www.encodeclub.com/programmes/solana-hackathon-2026",
+      "startsOn": "2026-10-12",
+      "registrationClosesOn": "2026-11-01",
+      "deadline": {
+        "source": "2026-11-08 23:59 UTC-12",
+        "utc": "2026-11-09T11:59:00Z",
+        "santiago": "2026-11-09T08:59:00-03:00"
+      },
+      "winnersOn": "2026-11-16",
+      "challenges": [
+        "Consumer App",
+        "Best Use of x402 on Solana"
+      ],
+      "reward": {
+        "kind": "accelerator_places",
+        "cash": false
+      },
+      "eligibility": "Global, solo o hasta cinco integrantes; devnet suficiente; IA alentada.",
+      "deliverables": [
+        "demo funcional",
+        "repositorio con instrucciones",
+        "video de 2 a 4 minutos",
+        "explicación de Solana"
+      ],
+      "verificationScope": "in_app_browser",
+      "verifiedOn": "2026-10-11"
+    },
+    {
+      "id": "dev3pack-hackathon",
+      "name": "Dev3pack Global Hackathon",
+      "status": "upcoming_eligibility_pending",
+      "sourceUrl": "https://hack.dev3pack.xyz/",
+      "faqUrl": "https://hack.dev3pack.xyz/faq",
+      "startsOn": "2026-11-27",
+      "endsOn": "2026-11-29",
+      "bootcamp": {
+        "startsOn": "2026-11-02",
+        "endsOn": "2026-11-27"
+      },
+      "reward": {
+        "kind": "unannounced",
+        "publishedPool": null
+      },
+      "eligibility": "Orientado a universitarios; elegibilidad personal pendiente. Individual o equipo de hasta cuatro; código previo y devnet admitidos; código abierto obligatorio.",
+      "verificationScope": "listing_and_faq_in_app_browser",
+      "deadline": {
+        "source": "29 de noviembre; hora exacta UTC en dashboard de participantes aceptados",
+        "utc": null,
+        "santiago": null
+      },
+      "note": "Tracks y premios TBA; no hay hora de entrega confirmada en este registro.",
+      "verifiedOn": "2026-10-11"
+    },
+    {
+      "id": "dev3pack-bridge",
+      "name": "Dev3pack Bridge",
+      "status": "upcoming_selection_required",
+      "sourceUrl": "https://bridge.dev3pack.xyz/",
+      "scheduleSourceUrl": "https://hack.dev3pack.xyz/",
+      "startsOn": "2026-12-07",
+      "durationWeeks": 8,
+      "reward": {
+        "kind": "accelerator_program",
+        "cash": false
+      },
+      "eligibility": "Talentos subrepresentados; ganadores Dev3pack con acceso acelerado; selección requerida.",
+      "note": "Programa principalmente remoto, gratuito, 0% equity.",
+      "verifiedOn": "2026-10-11"
+    },
+    {
+      "id": "solana-foundation",
+      "name": "Solana Foundation Funding",
+      "status": "rolling_applications",
+      "sourceUrl": "https://solana.org/grants-funding",
+      "reward": {
+        "kind": "grant_or_other_funding",
+        "publishedPool": null
+      },
+      "eligibility": "Evaluación del impacto y utilidad para el ecosistema; selección y diligencia previa.",
+      "note": "Importe y modalidad dependen del proyecto; no presupuestar concesión.",
+      "verifiedOn": "2026-10-11"
+    },
+    {
+      "id": "agentic-engineering",
+      "name": "Superteam Agentic Engineering",
+      "status": "paused",
+      "sourceUrl": "https://superteam.fun/earn/grants/agentic-engineering/",
+      "reward": {
+        "kind": "grant",
+        "publishedPool": null
+      },
+      "note": "Applications Paused; no contar con esta fuente para el MVP.",
+      "verifiedOn": "2026-10-11"
+    },
+    {
+      "id": "colosseum-eternal",
+      "name": "Colosseum Eternal",
+      "status": "paused",
+      "sourceUrl": "https://colosseum.com/eternal",
+      "reward": {
+        "kind": "program",
+        "publishedPool": null
+      },
+      "note": "Nuevos sprints cerrados; equipos con sprint iniciado pueden continuar hasta su fecha.",
+      "verifiedOn": "2026-10-11"
+    }
+  ]
+}
