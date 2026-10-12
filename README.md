@@ -6,6 +6,8 @@ Repositorio: [CaBsCrypto/ruta-builder](https://github.com/CaBsCrypto/ruta-builde
 
 ## Demo pública para Encode
 
+[Abrir Ruta Builder](https://ruta-builder-cabscryptocontacto-6028s-projects.vercel.app/) · acceso sin cuenta ni wallet. [CI](https://github.com/CaBsCrypto/ruta-builder/actions/workflows/ci.yml).
+
 La demo publicada reproduce perfil → fuentes de ejemplo → requisitos → informe → borrador editable y exportación. Funciona íntegramente en el navegador: los datos quedan en localStorage, la IA es una plantilla y el desbloqueo es simulado. No lee URLs externas, no llama OpenAI, no solicita firmas y no liquida USDC. El catálogo es una reproducción de las fichas revisadas el 11 de octubre de 2026; no acredita que sigan disponibles ni elegibilidad actual.
 
 El backend Express/SQLite completo se conserva en este repositorio y se reproduce con los comandos siguientes. La demo pública muestra el producto y sus límites; **no demuestra liquidación x402 en cadena**, que continúa pendiente por decisión del usuario. [Detalles y reproducción de la demo pública](docs/public-demo.md).
@@ -62,3 +64,5 @@ Responses API usa salida estructurada y `gpt-5.4-mini-2026-03-17`, con un máxim
 Los prototipos A (`src/buyer`, `src/payments`) y B (`src/reports`) se conservan. `npm run coach:smoke` prueba el informe nuevo con el comprador A, duplicados y descarga posterior; sólo usa fixtures. `npm run demo` reproduce la comparación anterior. Cuando exista una comunidad financiadora, B servirá para rendiciones USDC; ese fondo aún no forma parte del producto.
 
 Declarar todo el código existente al **11 de octubre de 2026** como trabajo previo para Encode. La investigación no equivale a inscripción ni entrega realizadas.
+
+La etiqueta [`encode-prehackathon-2026-10-11`](https://github.com/CaBsCrypto/ruta-builder/tree/encode-prehackathon-2026-10-11) conserva la base publicada antes de la ventana del hackathon. Validación: **113 pruebas**, TypeScript, ambos builds y smoke test; recorrido público hasta edición, descarga y recuperación del borrador en el mismo navegador.

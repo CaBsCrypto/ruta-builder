@@ -2,6 +2,8 @@
 
 Ruta Builder helps Solana builders prepare an evidence-aware diagnosis, work plan and application draft. The hosted demo walks through the product without credentials or tokens. Builder: **cabs**, individual participant. Source code is licensed under MIT.
 
+[Open the public demo](https://ruta-builder-cabscryptocontacto-6028s-projects.vercel.app/) · [GitHub source](https://github.com/CaBsCrypto/ruta-builder) · [CI checks](https://github.com/CaBsCrypto/ruta-builder/actions/workflows/ci.yml).
+
 ## What this deployment demonstrates
 
 - Guided project intake and optional target programme.
@@ -35,4 +37,8 @@ The local Express/SQLite implementation performs the HTTP 402 exchange with the 
 
 ## Submission status
 
+The deployment was checked without Vercel authentication and returned HTTP 200. The browser walkthrough used Ruta Builder itself, selected Encode, prepared and opened the demonstration report, edited and downloaded the draft, then recovered the same edit after reload. No console warnings or errors were captured. The repository CI passed all 113 tests, TypeScript, both builds and the backend smoke test.
+
 All code present on 11 October 2026 must be disclosed as work predating the hackathon. Public repository and demo are delivery assets; they do not imply acceptance, judging eligibility or an application already submitted. The demo video and proof of on-chain x402 settlement remain outstanding.
+
+The tag [`encode-prehackathon-2026-10-11`](https://github.com/CaBsCrypto/ruta-builder/tree/encode-prehackathon-2026-10-11) preserves that baseline.
